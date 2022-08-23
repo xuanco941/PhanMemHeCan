@@ -1,0 +1,62 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/lib/bootstrap_min.css">
+    <link rel="stylesheet" href="~/css/Light/MainLight.css">
+    <link rel="stylesheet" href="~/css/Login.css" />
+    <link rel="shortcut icon" href="~/img/logo.png" type="image/x-icon">
+    <title>Đăng nhập hệ thống</title>
+</head>
+
+<body>
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img style="max-width:45%;" src="~/img/users.svg" id="icon" alt="User Icon" />
+            </div>
+            <!-- Login Form -->
+            <form asp-action="Login" asp-controller="Authentication" method="post" enctype="multipart/form-data">
+                @if (TempData["usernameRecent"] == null && TempData["passwordRecent"] == null)
+                {
+                    <input type="text" required id="login" class="fadeIn second" name="username" placeholder="Tài khoản">
+                    <input type="password" required class="fadeIn third" name="password" placeholder="Mật khẩu">
+                }
+                else
+                {
+                    <input value="@TempData["usernameRecent"]" type="text" required id="login" class="fadeIn second" name="username" placeholder="Tài khoản">
+                    <input value="@TempData["passwordRecent"]" type="password" required class="fadeIn third" name="password" placeholder="Mật khẩu">
+                }
+
+                @if (TempData["messageLogin"] != null)
+                {
+                    <div style="color:red; font-size:85%">@TempData["messageLogin"]</div>
+                }
+                <input type="submit" class="fadeIn fourth" value="Đăng nhập">
+            </form>
+
+            @*    <!-- Remind Passowrd -->
+            <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+            </div>*@
+
+        </div>
+    </div>
+    <script>
+        document.querySelector('#login').focus();
+    </script>
+</body>
+
+</html>
+
+
+
+
+

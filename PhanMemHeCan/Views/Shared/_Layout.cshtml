@@ -1,0 +1,80 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap_min.css" />
+
+    <link rel="stylesheet" href="~/css/Toast.css" />
+
+
+    <link rel="shortcut icon" href="~/img/logo.png" type="image/x-icon">
+    <title>LeanWay</title>
+</head>
+
+<body>
+
+
+
+
+    @*    TOAST
+    *@
+    <div class="toast-container" id="toast_container">
+
+        <div style="display:none;" id="toast_success" class="toast toast-success" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="fa-solid fa-circle-check"></i>
+                <strong class="me-auto">NULL</strong>
+                <button type="button" class="btn-close btn_toast_close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Dev by X941
+            </div>
+        </div>
+
+        <div style="display:none;" id="toast_danger" class="toast toast-danger" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <strong class="me-auto">NULL</strong>
+                <button type="button" class="btn-close btn_toast_close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Dev by X941
+            </div>
+        </div>
+    </div>
+
+
+
+
+    @*Container*@
+    <div class="container">
+        @RenderBody()
+    </div>
+
+
+    <script src="~/lib/jquery3_2_1.js"></script>
+    <script src="~/lib/popper.js"></script>
+    <script src="~/lib/bootstrap_min.js"></script>
+    <script src="~/lib/bootstrap_bundle_min.js"></script>
+    <script src="~/js/Toast.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>
+
+
+
+
+
