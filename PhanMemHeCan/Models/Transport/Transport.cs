@@ -17,12 +17,12 @@ namespace PhanMemHeCan.Models.Transport
         public double? TotalWeight { get; set; }
         [StringLength(100)]
         public string? NumberPlates { get; set; }
-        public string? Image { get; set; }
+        public string? ImagePath { get; set; }
         [StringLength(100)]
         public string? UsernamePerformer { get; set; }
         public DateTime? CreateAt { get; set; }
 
-        public Transport(int transportID, string? productName, string? customer, double? productWeight, double? carWeight, double? totalWeight, string? numberPlates, string? image, string? usernamePerformer, DateTime? createAt)
+        public Transport(int transportID, string? productName, string? customer, double? productWeight, double? carWeight, double? totalWeight, string? numberPlates, string? imagePath, string? usernamePerformer, DateTime? createAt)
         {
             TransportID = transportID;
             ProductName = productName;
@@ -31,7 +31,7 @@ namespace PhanMemHeCan.Models.Transport
             CarWeight = carWeight;
             TotalWeight = totalWeight;
             NumberPlates = numberPlates;
-            Image = image;
+            ImagePath = imagePath;
             UsernamePerformer = usernamePerformer;
             CreateAt = createAt;
         }

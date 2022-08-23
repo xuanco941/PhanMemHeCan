@@ -1,6 +1,8 @@
 using PhanMemHeCan.Middlewares;
 using PhanMemHeCan.Models;
+using PhanMemHeCan.Models.Car;
 using PhanMemHeCan.Models.Group;
+using PhanMemHeCan.Models.Transport;
 using PhanMemHeCan.Models.User;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,7 +52,9 @@ app.UseAuthMiddleware();
 
 await PhanMemHeCanContext.ResetDatabase();
 GroupBusiness.AddGroup(new PhanMemHeCan.Models.Group.GroupViewModel.AddGroupViewModel { GroupName = "QUyen Admin", IsManagementGroup = true, IsManagementUser = true });
-await UserBusiness.AddUser(new PhanMemHeCan.Models.User.UserViewModel.AddUserViewModel { FullName = "DO VAN XUAN", Username = "username", Password = "password" , GroupID = 1});
+UserBusiness.AddUser(new PhanMemHeCan.Models.User.UserViewModel.AddUserViewModel { FullName = "DO VAN XUAN", Username = "username", Password = "password", GroupID = 1 });
+CarBusiness.AddCar(new PhanMemHeCan.Models.Car.CarViewModel.AddCarViewModel { DriverName = "Nguyen hong son", CarWeight = 198, NumberPlates = "29-1213" });
+TransportBusiness.AddTransport(new PhanMemHeCan.Models.Transport.TransportViewModel.AddTransportViewModel { });
 
 app.Run();
 

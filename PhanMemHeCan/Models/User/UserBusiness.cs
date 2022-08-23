@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PhanMemHeCan.Models.User.UserViewModel;
 using NinjaNye.SearchExtensions;
+using System.Reflection.Metadata.Ecma335;
+
 namespace PhanMemHeCan.Models.User
 {
 
@@ -24,7 +26,7 @@ namespace PhanMemHeCan.Models.User
         public static List<User> FindUserByFullNameOrUsername(string name)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var list = (phanMemHeCanContext.User.Search(x => x.Username,x => x.FullName).Containing(name)).ToList();
+            var list = (phanMemHeCanContext.User.Search(x => x.Username, x => x.FullName).Containing(name)).ToList();
             return list;
         }
 
@@ -38,36 +40,47 @@ namespace PhanMemHeCan.Models.User
 
 
         // Them TK
-        public static async Task AddUser(AddUserViewModel user)
+        public static bool AddUser(AddUserViewModel user)
         {
             User userAdd = new User(user.FullName, user.Username, user.Password, user.GroupID);
 
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            await phanMemHeCanContext.User.AddAsync(userAdd);
-            await phanMemHeCanContext.SaveChangesAsync();
+            phanMemHeCanContext.User.Add(userAdd);
+            // số dòng thay đổi lớn hơn 0 thì đúng
+            return phanMemHeCanContext.SaveChanges() > 0 ? true : false;
 
         }
 
         // Sua TK
-        public static async Task UpdateUser(User user)
+        public static bool UpdateUser(User user)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var userUpdate = await (from u in phanMemHeCanContext.User where (u.UserID == user.UserID) select u).FirstOrDefaultAsync();
-            if (userUpdate != null)
+            var userUpdate = (from u in phanMemHeCanContext.User where (u.UserID == user.UserID) select u).First();
+
+            userUpdate = user;
+            if (phanMemHeCanContext.SaveChanges() > 0)
             {
-                userUpdate = user;
-                await phanMemHeCanContext.SaveChangesAsync();
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
-        public static async Task DeleteUser(int UserID)
+        public static bool DeleteUser(int UserID)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var userDelete = await(from u in phanMemHeCanContext.User where (u.UserID == UserID) select u).FirstOrDefaultAsync();
-            if (userDelete != null)
+            var userDelete = (from u in phanMemHeCanContext.User where (u.UserID == UserID) select u).First();
+
+            phanMemHeCanContext.Remove(userDelete);
+            if (phanMemHeCanContext.SaveChanges() > 0)
             {
-                phanMemHeCanContext.Remove(userDelete);
-                await phanMemHeCanContext.SaveChangesAsync();
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

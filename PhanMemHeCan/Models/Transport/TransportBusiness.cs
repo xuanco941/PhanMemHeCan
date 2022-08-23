@@ -1,41 +1,32 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
+using PhanMemHeCan.Models.Transport.TransportViewModel;
 
 namespace PhanMemHeCan.Models.Transport
 {
     public class TransportBusiness
     {
 
-        public static async Task DeleteTransportFromID(int TransportID)
+        public static bool DeleteTransportFromID(int TransportID)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var transport = await (from t in phanMemHeCanContext.Transport where t.TransportID == TransportID select t).FirstOrDefaultAsync();
-            if (transport != null)
+            var transport = (from t in phanMemHeCanContext.Transport where t.TransportID == TransportID select t).First();
+            phanMemHeCanContext.Remove(transport);
+            if (phanMemHeCanContext.SaveChanges() > 0)
             {
-                phanMemHeCanContext.Remove(transport);
-                await phanMemHeCanContext.SaveChangesAsync();
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
-        public static void AddTransport(string ProductName,string Customer,double ProductWeight,double CarWeight,double TotalWeight,string NumberPlates,string ImagePath,string UsernamePerformer)
+        public static bool AddTransport(AddTransportViewModel addTransportViewModel)
         {
-            SqlConnection sqlConnection = new SqlConnection(Common.ConnectionString);
-            sqlConnection.Open();
-            var command = new SqlCommand();
-            command.CommandText = "exec AddTransport @ProductName,@Customer,@ProductWeight,@CarWeight,@TotalWeight,@NumberPlates,@ImagePath,@UsernamePerformer";
-            command.Parameters.AddWithValue("ProductName",ProductName);
-            command.Parameters.AddWithValue("Customer", Customer);
-            command.Parameters.AddWithValue("ProductWeight", ProductWeight);
-            command.Parameters.AddWithValue("CarWeight", CarWeight);
-            command.Parameters.AddWithValue("TotalWeight", TotalWeight);
-            command.Parameters.AddWithValue("NumberPlates", NumberPlates);
-            command.Parameters.AddWithValue("ImagePath", ImagePath);
-            command.Parameters.AddWithValue("UsernamePerformer", UsernamePerformer);
-
-            command.Connection = sqlConnection;
-
-            command.ExecuteNonQuery();
-            sqlConnection.Close();
+            PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
+            phanMemHeCanContext.Transport.Add(new Transport { ProductName = addTransportViewModel.ProductName, Customer = addTransportViewModel.Customer, ProductWeight = addTransportViewModel.ProductWeight, CarWeight = addTransportViewModel.CarWeight, TotalWeight = addTransportViewModel.TotalWeight, NumberPlates = addTransportViewModel.NumberPlates, ImagePath = addTransportViewModel.ImagePath, UsernamePerformer = addTransportViewModel.UsernamePerformer });
+            return phanMemHeCanContext.SaveChanges() > 0 ? true : false;
         }
     }
 }
