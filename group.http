@@ -1,0 +1,40 @@
+
+POST https://localhost:7028/group/getgroupfromid
+Content-Type: application/json
+
+{
+    "groupid":1
+}
+
+###
+POST https://localhost:7028/group/addgroup
+Content-Type: application/json
+
+{
+    "GroupName":"abcd",
+    "IsManagementUser":false,
+    "IsManagementGroup":false
+}
+
+###
+
+POST https://localhost:7028/group/updategroup
+Content-Type: application/json
+
+{
+    "groupid":1,
+    "GroupName":"xuan update",
+    "IsManagementUser":false,
+    "IsManagementGroup":false
+}
+
+###
+
+POST https://localhost:7028/group/deletegroup
+Content-Type: application/json
+Accept: application/json
+
+{
+    "groupID":1
+}
+

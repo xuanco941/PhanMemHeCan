@@ -2,7 +2,6 @@
 using PhanMemHeCan.Models;
 using PhanMemHeCan.Models.Group;
 using PhanMemHeCan.Models.Group.ViewModels;
-using Group = PhanMemHeCan.Models.Group.Group;
 
 namespace PhanMemHeCan.Controllers
 {

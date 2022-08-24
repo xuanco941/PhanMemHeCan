@@ -16,6 +16,13 @@ namespace PhanMemHeCan.Models.Group
         public bool? IsManagementUser { get; set; }
         public bool? IsManagementGroup { get; set; }
 
+        public Group(string? groupName, bool? isManagementUser, bool? isManagementGroup)
+        {
+            GroupName = groupName;
+            IsManagementUser = isManagementUser;
+            IsManagementGroup = isManagementGroup;
+        }
+
         public Group(int groupID, string? groupName, bool? isManagementUser, bool? isManagementGroup)
         {
             GroupID = groupID;

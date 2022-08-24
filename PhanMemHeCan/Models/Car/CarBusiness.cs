@@ -1,4 +1,5 @@
 ﻿using PhanMemHeCan.Models.Car.ViewModels;
+using PhanMemHeCan.Models.Group.ViewModels;
 using System.Data.SqlClient;
 
 namespace PhanMemHeCan.Models.Car
@@ -31,16 +32,24 @@ namespace PhanMemHeCan.Models.Car
         public static int UpdateCar(Car car)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var carUpdate = (from c in phanMemHeCanContext.Car where c.CarID == car.CarID select c).First();
-            carUpdate = car;
+            var carUpdate = phanMemHeCanContext.Car.FirstOrDefault(car => car.CarID == car.CarID);
+            if (carUpdate != null)
+            {
+                carUpdate.CarWeight = car.CarWeight;
+                carUpdate.NumberPlates = car.NumberPlates;
+                carUpdate.DriverName = car.DriverName;
+            }
             return phanMemHeCanContext.SaveChanges();
         }
 
         public static int DeleteCar(CarIDViewModel carIDViewModel)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var carDelete = (from c in phanMemHeCanContext.Car where c.CarID == carIDViewModel.CarID select c).First();
-            phanMemHeCanContext.Remove(carDelete);
+            var carDelete = phanMemHeCanContext.Car.FirstOrDefault(car => car.CarID == carIDViewModel.CarID);
+            if (carDelete != null)
+            {
+                phanMemHeCanContext.Car.Remove(carDelete);
+            }
             return phanMemHeCanContext.SaveChanges();
         }
     }

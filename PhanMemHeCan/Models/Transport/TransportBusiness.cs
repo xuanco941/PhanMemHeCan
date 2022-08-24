@@ -10,8 +10,11 @@ namespace PhanMemHeCan.Models.Transport
         public static int DeleteTransportFromID(TransportIDViewModel transportIDViewModel)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var transport = (from t in phanMemHeCanContext.Transport where t.TransportID == transportIDViewModel.TransportID select t).First();
-            phanMemHeCanContext.Remove(transport);
+            var transport = (from t in phanMemHeCanContext.Transport where t.TransportID == transportIDViewModel.TransportID select t).FirstOrDefault();
+            if(transport != null)
+            {
+                phanMemHeCanContext.Remove(transport);
+            }
             return phanMemHeCanContext.SaveChanges();
         }
 

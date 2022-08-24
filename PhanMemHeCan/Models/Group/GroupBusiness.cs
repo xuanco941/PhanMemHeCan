@@ -33,7 +33,7 @@ namespace PhanMemHeCan.Models.Group
         public static int AddGroup(AddGroupViewModel group)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            phanMemHeCanContext.Group.Add(new Group { GroupName = group.GroupName, IsManagementGroup = group.IsManagementGroup, IsManagementUser = group.IsManagementUser });
+            phanMemHeCanContext.Group.Add(new Group ( group.GroupName, group.IsManagementUser, group.IsManagementGroup));
             return phanMemHeCanContext.SaveChanges();
         }
 
@@ -41,9 +41,13 @@ namespace PhanMemHeCan.Models.Group
         public static int UpdateGroup(Group gr)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var groupUpdate = (from g in phanMemHeCanContext.Group where g.GroupID == gr.GroupID select g).First();
-
-            groupUpdate = gr;
+            var groupUpdate = phanMemHeCanContext.Group.FirstOrDefault(group => group.GroupID == gr.GroupID);
+            if(groupUpdate != null)
+            {
+                groupUpdate.GroupName = gr.GroupName;
+                groupUpdate.IsManagementUser = gr.IsManagementUser;
+                groupUpdate.IsManagementGroup = gr.IsManagementGroup;
+            }
             return phanMemHeCanContext.SaveChanges();
 
         }
@@ -51,8 +55,11 @@ namespace PhanMemHeCan.Models.Group
         public static int DeleteGroup(GroupIDViewModel groupIDViewModel)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var groupDelete = (from g in phanMemHeCanContext.Group where g.GroupID == groupIDViewModel.GroupID select g).First();
-            phanMemHeCanContext.Remove(groupDelete);
+            var groupDelete = phanMemHeCanContext.Group.FirstOrDefault(group => group.GroupID == groupIDViewModel.GroupID);
+            if(groupDelete != null)
+            {
+                phanMemHeCanContext.Group.Remove(groupDelete);
+            }
             return phanMemHeCanContext.SaveChanges();
         }
     }

@@ -14,7 +14,7 @@ namespace PhanMemHeCan.Middlewares
         public async Task Invoke(HttpContext httpContext)
         {
             // neu ma session login ton tai va session login la id user da bi delete
-            if (httpContext.Session.GetInt32(Common.SESSION_USERID) != null && Common.listIdUserHasDeleted.Contains((int)httpContext.Session.GetInt32(Common.SESSION_USERID)) == true)
+            if (httpContext.Session.GetInt32(Common.SESSION_USERID) != null && Common.listIdUserHasDeleted.Count > 0 && Common.listIdUserHasDeleted.Contains((int)httpContext.Session.GetInt32(Common.SESSION_USERID)) == true)
             {
                 //remove session when id has be deleted
                 Common.listIdUserHasDeleted.Remove((int)httpContext.Session.GetInt32(Common.SESSION_USERID));
