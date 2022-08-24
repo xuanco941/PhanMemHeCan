@@ -1,6 +1,7 @@
 ﻿
-using PhanMemHeCan.Models.Group.GroupViewModel;
+using PhanMemHeCan.Models.Group.ViewModels;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace PhanMemHeCan.Models.Group
 {
@@ -14,59 +15,45 @@ namespace PhanMemHeCan.Models.Group
         }
 
 
-        public static Group? GetGroupFromID(int GroupID)
+        public static Group? GetGroupFromID(GroupIDViewModel groupIDViewModel)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            Group? group = (from gr in phanMemHeCanContext.Group where gr.GroupID == GroupID select gr).FirstOrDefault();
+            Group? group = (from gr in phanMemHeCanContext.Group where gr.GroupID == groupIDViewModel.GroupID select gr).FirstOrDefault();
             return group;
         }
         //Tìm kiếm group bằng tên
-        public static List<Group> FindGroupByName(string name)
+        public static List<Group> FindGroupByName(GroupNameViewModel groupNameViewModel)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var list = (from gr in phanMemHeCanContext.Group where (gr.GroupName != null && gr.GroupName.Contains(name) == true) select gr).ToList();
+            var list = (from gr in phanMemHeCanContext.Group where (gr.GroupName != null && gr.GroupName.Contains(groupNameViewModel.GroupName) == true) select gr).ToList();
             return list;
         }
 
         // Them nhóm quyền
-        public static bool AddGroup(AddGroupViewModel group)
+        public static int AddGroup(AddGroupViewModel group)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
             phanMemHeCanContext.Group.Add(new Group { GroupName = group.GroupName, IsManagementGroup = group.IsManagementGroup, IsManagementUser = group.IsManagementUser });
-            return phanMemHeCanContext.SaveChanges() > 0 ? true : false;
+            return phanMemHeCanContext.SaveChanges();
         }
 
         // Sua group
-        public static bool UpdateGroup(Group gr)
+        public static int UpdateGroup(Group gr)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
             var groupUpdate = (from g in phanMemHeCanContext.Group where g.GroupID == gr.GroupID select g).First();
 
             groupUpdate = gr;
-            if (phanMemHeCanContext.SaveChanges() > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return phanMemHeCanContext.SaveChanges();
 
         }
 
-        public static bool DeleteGroup(int GroupID)
+        public static int DeleteGroup(GroupIDViewModel groupIDViewModel)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var groupDelete = (from g in phanMemHeCanContext.Group where g.GroupID == GroupID select g).First();
+            var groupDelete = (from g in phanMemHeCanContext.Group where g.GroupID == groupIDViewModel.GroupID select g).First();
             phanMemHeCanContext.Remove(groupDelete);
-            if (phanMemHeCanContext.SaveChanges() > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return phanMemHeCanContext.SaveChanges();
         }
     }
 }

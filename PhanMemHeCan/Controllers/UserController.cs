@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhanMemHeCan.Models.User;
-using PhanMemHeCan.Models.User.UserViewModel;
+using PhanMemHeCan.Models.User.ViewModels;
+using PhanMemHeCan.Models;
 
 namespace PhanMemHeCan.Controllers
 {
@@ -24,29 +25,73 @@ namespace PhanMemHeCan.Controllers
         [HttpPost]
         public IActionResult AddUser([FromBody] AddUserViewModel addUserViewModel)
         {
+            int rowChanged = 0;
             try
             {
-                UserBusiness.AddUser(addUserViewModel);
-                return Json("success");
+                //trả về số dòng thay đổi trên database
+                rowChanged = UserBusiness.AddUser(addUserViewModel);
+                if (rowChanged > 0)
+                {
+                    return Json(new ResponseViewModel<User> { status = true, message = "Thêm thành công.", rowsNumberChanged = rowChanged, data = null });
+                }
+                else
+                {
+                    return Json(new ResponseViewModel<User> { status = false, message = "Thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
+                }
             }
             catch
             {
-                return Json("error");
+                return Json(new ResponseViewModel<User> { status = false, message = "Lỗi hệ thống, không thể thêm tài khoản.", rowsNumberChanged = rowChanged, data = null });
             }
         }
 
         [HttpPost]
         public IActionResult UpdateUser([FromBody] User user)
         {
+            int rowChanged = 0;
             try
             {
-                UserBusiness.UpdateUser(user);
-                return Json("success");
+                //trả về số dòng thay đổi trên database
+                rowChanged = UserBusiness.UpdateUser(user);
+                if (rowChanged > 0)
+                {
+                    return Json(new ResponseViewModel<User> { status = true, message = "Cập nhật thành công.", rowsNumberChanged = rowChanged, data = null });
+                }
+                else
+                {
+                    return Json(new ResponseViewModel<User> { status = false, message = "Cập nhật không thành công.", rowsNumberChanged = rowChanged , data = null });
+                }
             }
             catch
             {
-                //Lỗi
-                return Json("error");
+                return Json(new ResponseViewModel<User> { status = false, message = "Lỗi hệ thống, không thể cập nhật dữ liệu người dùng này.", rowsNumberChanged = rowChanged, data = null });
+            }
+        }
+
+
+        //Xóa
+        [HttpPost]
+        public IActionResult DeleteUser([FromBody] UserIDViewModel userIDViewModel)
+        {
+            int rowChanged = 0;
+            try
+            {
+                rowChanged = UserBusiness.DeleteUser(userIDViewModel);
+                if (rowChanged > 0)
+                {
+                    //them vao list user has deleted
+                    Common.listIdUserHasDeleted.Add(userIDViewModel.UserID);
+                    return Json(new ResponseViewModel<User> { status = true, message = "Xóa thành công.", rowsNumberChanged = rowChanged, data = null });
+                }
+                else
+                {
+                    return Json(new ResponseViewModel<User> { status = false, message = "Xóa không thành công.", rowsNumberChanged = rowChanged, data = null });
+                }
+
+            }
+            catch
+            {
+                return Json(new ResponseViewModel<User> { status = false, message = "Lỗi hệ thống, không thể xóa dữ liệu người dùng này.", rowsNumberChanged = rowChanged, data = null });
             }
         }
 
@@ -56,15 +101,17 @@ namespace PhanMemHeCan.Controllers
         {
             try
             {
-                User user = UserBusiness.GetUserFromID(userIDViewModel.UserID);
-                return Json(user);
+                User? user = UserBusiness.GetUserFromID(userIDViewModel);
+                return Json(new ResponseViewModel<User> { status = true, message = "success", rowsNumberChanged = 0, data = user });
             }
             catch
             {
-                return Json("error");
+                return Json(new ResponseViewModel<User> { status = false, message = "error", rowsNumberChanged = 0, data = null });
             }
 
         }
+
+
 
 
         [HttpPost]
@@ -72,33 +119,14 @@ namespace PhanMemHeCan.Controllers
         {
             try
             {
-                List<User> users = UserBusiness.FindUserByFullNameOrUsername(nameViewModel.Name);
-                return Json(users);
+                List<User> users = UserBusiness.FindUserByFullNameOrUsername(nameViewModel);
+                return Json(new ResponseViewModel<List<User>> { status = true, message = "success", rowsNumberChanged = 0, data = users });
             }
             catch
             {
-                return Json("error");
+                return Json(new ResponseViewModel<User> { status = false, message = "error", rowsNumberChanged = 0, data = null });
             }
 
-        }
-
-
-
-        //Xóa
-        [HttpPost]
-        public IActionResult DeleteUser([FromBody] UserIDViewModel userIDViewModel)
-        {
-            try
-            {
-                UserBusiness.DeleteUser(userIDViewModel.UserID);
-                //them vao list user has deleted
-                Common.listIdUserHasDeleted.Add(userIDViewModel.UserID);
-                return Json("success");
-            }
-            catch
-            {
-                return Json("error");
-            }
         }
 
     }

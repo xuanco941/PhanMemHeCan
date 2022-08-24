@@ -1,4 +1,4 @@
-﻿using PhanMemHeCan.Models.Car.CarViewModel;
+﻿using PhanMemHeCan.Models.Car.ViewModels;
 using System.Data.SqlClient;
 
 namespace PhanMemHeCan.Models.Car
@@ -12,58 +12,36 @@ namespace PhanMemHeCan.Models.Car
         }
 
 
-        public static Car? GetGroupFromID(int CarID)
+        public static Car? GetGroupFromID(CarIDViewModel carIDViewModel)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            return (from car in phanMemHeCanContext.Car where car.CarID == CarID select car).FirstOrDefault();
+            return (from car in phanMemHeCanContext.Car where car.CarID == carIDViewModel.CarID select car).FirstOrDefault();
         }
 
 
         // Them xe
-        public static bool AddCar(AddCarViewModel addCarViewModel)
+        public static int AddCar(AddCarViewModel addCarViewModel)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
             phanMemHeCanContext.Car.Add(new Car { DriverName = addCarViewModel.DriverName, NumberPlates = addCarViewModel.NumberPlates, CarWeight = addCarViewModel.CarWeight });
-            if (phanMemHeCanContext.SaveChanges() > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return phanMemHeCanContext.SaveChanges();
         }
 
         // Sua xe
-        public static bool UpdateCar(Car car)
+        public static int UpdateCar(Car car)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
             var carUpdate = (from c in phanMemHeCanContext.Car where c.CarID == car.CarID select c).First();
             carUpdate = car;
-            if (phanMemHeCanContext.SaveChanges() > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            return phanMemHeCanContext.SaveChanges();
         }
 
-        public static bool DeleteCar(int CarID)
+        public static int DeleteCar(CarIDViewModel carIDViewModel)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var carDelete = (from c in phanMemHeCanContext.Car where c.CarID == CarID select c).First();
+            var carDelete = (from c in phanMemHeCanContext.Car where c.CarID == carIDViewModel.CarID select c).First();
             phanMemHeCanContext.Remove(carDelete);
-            if (phanMemHeCanContext.SaveChanges() > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return phanMemHeCanContext.SaveChanges();
         }
     }
 }

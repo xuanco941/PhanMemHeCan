@@ -1,4 +1,4 @@
-﻿namespace PhanMemHeCan.Models.User.UserViewModel
+﻿namespace PhanMemHeCan.Models.User.ViewModels
 {
     public class UserIDViewModel
     {

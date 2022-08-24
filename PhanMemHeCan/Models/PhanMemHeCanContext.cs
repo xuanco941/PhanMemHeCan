@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PhanMemHeCan.Models.Group;
 
 namespace PhanMemHeCan.Models
 {

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PhanMemHeCan.Models;
 using PhanMemHeCan.Models.Group;
-using PhanMemHeCan.Models.Group.GroupViewModel;
+using PhanMemHeCan.Models.Group.ViewModels;
+using Group = PhanMemHeCan.Models.Group.Group;
 
 namespace PhanMemHeCan.Controllers
 {
@@ -23,40 +25,65 @@ namespace PhanMemHeCan.Controllers
         [HttpPost]
         public IActionResult AddGroup([FromBody] AddGroupViewModel addGroupViewModel)
         {
+            int rowChanged = 0;
             try
             {
-                GroupBusiness.AddGroup(addGroupViewModel);
-                return Json("success");
+                //trả về số dòng thay đổi trên database
+                rowChanged = GroupBusiness.AddGroup(addGroupViewModel);
+                if (rowChanged > 0)
+                {
+                    return Json(new ResponseViewModel<Group> { status = true, message = "Thêm thành công.", rowsNumberChanged = rowChanged, data = null });
+                }
+                else
+                {
+                    return Json(new ResponseViewModel<Group> { status = false, message = "Thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
+                }
             }
             catch
             {
-                return Json("error");
+                return Json(new ResponseViewModel<Group> { status = false, message = "Lỗi hệ thống, không thể thêm nhóm quyền.", rowsNumberChanged = rowChanged, data = null });
             }
         }
         [HttpPost]
         public IActionResult UpdateGroup([FromBody] Group group)
         {
+            int rowChanged = 0;
             try
             {
-                GroupBusiness.UpdateGroup(group);
-                return Json("success");
+                rowChanged = GroupBusiness.UpdateGroup(group);
+                if (rowChanged > 0)
+                {
+                    return Json(new ResponseViewModel<Group> { status = true, message = "Cập nhật thành công.", rowsNumberChanged = rowChanged, data = null });
+                }
+                else
+                {
+                    return Json(new ResponseViewModel<Group> { status = false, message = "Cập nhật không thành công.", rowsNumberChanged = rowChanged, data = null });
+                }
             }
             catch
             {
-                return Json("error");
+                return Json(new ResponseViewModel<Group> { status = false, message = "Lỗi hệ thống, không thể cập nhật.", rowsNumberChanged = rowChanged, data = null });
             }
         }
         [HttpPost]
         public IActionResult DeleteGroup([FromBody] GroupIDViewModel groupIDViewModel)
         {
+            int rowChanged = 0;
             try
             {
-                GroupBusiness.DeleteGroup(groupIDViewModel.GroupID);
-                return Json("success");
+                rowChanged = GroupBusiness.DeleteGroup(groupIDViewModel);
+                if (rowChanged > 0)
+                {
+                    return Json(new ResponseViewModel<Group> { status = true, message = "Xóa thành công.", rowsNumberChanged = rowChanged, data = null });
+                }
+                else
+                {
+                    return Json(new ResponseViewModel<Group> { status = false, message = "Xóa không thành công.", rowsNumberChanged = rowChanged, data = null });
+                }
             }
             catch
             {
-                return Json("error");
+                return Json(new ResponseViewModel<Group> { status = false, message = "Lỗi hệ thống, không thể xóa.", rowsNumberChanged = rowChanged, data = null });
             }
         }
         [HttpPost]
@@ -64,12 +91,12 @@ namespace PhanMemHeCan.Controllers
         {
             try
             {
-                Group group = GroupBusiness.GetGroupFromID(groupIDViewModel.GroupID);
-                return Json(group);
+                Group? group = GroupBusiness.GetGroupFromID(groupIDViewModel);
+                return Json(new ResponseViewModel<Group> { status = true, message = "success", rowsNumberChanged = 0, data = group });
             }
             catch
             {
-                return Json("error");
+                return Json(new ResponseViewModel<Group> { status = false, message = "error", rowsNumberChanged = 0, data = null });
             }
 
         }
@@ -80,14 +107,13 @@ namespace PhanMemHeCan.Controllers
         {
             try
             {
-                List<Group> groups = GroupBusiness.FindGroupByName(groupNameViewModel.GroupName);
-                return Json(groups);
+                List<Group> groups = GroupBusiness.FindGroupByName(groupNameViewModel);
+                return Json(new ResponseViewModel<List<Group>> { status = true, message = "success", rowsNumberChanged = 0, data = groups });
             }
             catch
             {
-                return Json("error");
+                return Json(new ResponseViewModel<List<Group>> { status = true, message = "error", rowsNumberChanged = 0, data = null });
             }
-
         }
 
 

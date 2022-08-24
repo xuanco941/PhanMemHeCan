@@ -1,4 +1,4 @@
-﻿namespace PhanMemHeCan.Models.Group.GroupViewModel
+﻿namespace PhanMemHeCan.Models.Group.ViewModels
 {
     public class GroupIDViewModel
     {
