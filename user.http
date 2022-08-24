@@ -1,0 +1,54 @@
+GET https://localhost:7028/
+
+###
+
+POST https://localhost:7028/user/getuserfromid
+Content-Type: application/json
+
+{
+    "userid":1
+}
+
+###
+POST https://localhost:7028/user/FindUserByFullNameOrUsername
+Content-Type: application/json
+
+{
+    "name":"xuan"
+}
+
+###
+
+POST https://localhost:7028/user/adduser
+Content-Type: application/json
+
+{
+    "fullname":"xuan",
+    "username":"Xuânzâav",
+    "password":"xuan",
+    "groupid":1
+}
+
+###
+
+POST https://localhost:7028/user/updateuser
+Content-Type: application/json
+
+{
+    "userid":1,
+    "fullname":"xuan updateuser a",
+    "username":"xuanupdate",
+    "password":"xuan",
+    "groupid":1
+}
+
+###
+
+POST https://localhost:7028/user/deleteuser
+Content-Type: application/json
+Accept: application/json
+
+{
+    "userID":1
+}
+

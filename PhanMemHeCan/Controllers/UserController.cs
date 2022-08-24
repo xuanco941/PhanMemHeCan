@@ -26,6 +26,7 @@ namespace PhanMemHeCan.Controllers
         public IActionResult AddUser([FromBody] AddUserViewModel addUserViewModel)
         {
             int rowChanged = 0;
+
             try
             {
                 //trả về số dòng thay đổi trên database
@@ -36,17 +37,18 @@ namespace PhanMemHeCan.Controllers
                 }
                 else
                 {
-                    return Json(new ResponseViewModel<User> { status = false, message = "Thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<User> { status = false, message = "thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
                 }
+
             }
             catch
             {
-                return Json(new ResponseViewModel<User> { status = false, message = "Lỗi hệ thống, không thể thêm tài khoản.", rowsNumberChanged = rowChanged, data = null });
+                return Json(new ResponseViewModel<User> { status = false, message = "Lỗi hệ thống, không thể thêm tài khoản này.", rowsNumberChanged = rowChanged, data = null });
             }
         }
 
         [HttpPost]
-        public IActionResult UpdateUser([FromBody] User user)
+        public IActionResult UpdateUser([FromBody] UserViewModel user)
         {
             int rowChanged = 0;
             try
@@ -59,7 +61,7 @@ namespace PhanMemHeCan.Controllers
                 }
                 else
                 {
-                    return Json(new ResponseViewModel<User> { status = false, message = "Cập nhật không thành công.", rowsNumberChanged = rowChanged , data = null });
+                    return Json(new ResponseViewModel<User> { status = false, message = "Cập nhật không thành công.", rowsNumberChanged = rowChanged, data = null });
                 }
             }
             catch

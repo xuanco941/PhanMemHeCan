@@ -2,6 +2,7 @@
 using PhanMemHeCan.Models.User.ViewModels;
 using NinjaNye.SearchExtensions;
 using System.Reflection.Metadata.Ecma335;
+using System.Text;
 
 namespace PhanMemHeCan.Models.User
 {
@@ -39,10 +40,30 @@ namespace PhanMemHeCan.Models.User
         }
 
 
+
+        // chuyển tiếng việt có dấu thành không dấu
+        private static string utf8Convert(string s)
+        {
+            string stFormD = s.Normalize(NormalizationForm.FormD);
+            StringBuilder sb = new StringBuilder();
+            for (int ich = 0; ich < stFormD.Length; ich++)
+            {
+                System.Globalization.UnicodeCategory uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+                if (uc != System.Globalization.UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(stFormD[ich]);
+                }
+            }
+            sb = sb.Replace('Đ', 'D');
+            sb = sb.Replace('đ', 'd');
+            return (sb.ToString().Normalize(NormalizationForm.FormD));
+        }
+
+
         // Them TK
         public static int AddUser(AddUserViewModel user)
         {
-            User userAdd = new User(user.FullName, user.Username, user.Password, user.GroupID);
+            User userAdd = new User(user.FullName, utf8Convert(user.Username).ToLower().Replace(" ", string.Empty), user.Password, user.GroupID);
 
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
             phanMemHeCanContext.User.Add(userAdd);
@@ -52,21 +73,29 @@ namespace PhanMemHeCan.Models.User
         }
 
         // Sua TK
-        public static int UpdateUser(User user)
+        public static int UpdateUser(UserViewModel user)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var userUpdate = (from u in phanMemHeCanContext.User where (u.UserID == user.UserID) select u).First();
+            var userUpdate = phanMemHeCanContext.User.FirstOrDefault(u => u.UserID == user.UserID);
+            if (userUpdate != null)
+            {
+                userUpdate.Username = utf8Convert(user.Username).ToLower().Replace(" ", string.Empty);
+                userUpdate.Password = user.Password;
+                userUpdate.FullName = user.FullName;
+                userUpdate.GroupID = user.GroupID;
+            }
 
-            userUpdate = user;
             return phanMemHeCanContext.SaveChanges();
         }
 
         public static int DeleteUser(UserIDViewModel userIDViewModel)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var userDelete = (from u in phanMemHeCanContext.User where (u.UserID == userIDViewModel.UserID) select u).First();
-
-            phanMemHeCanContext.Remove(userDelete);
+            var userDelete = phanMemHeCanContext.User.FirstOrDefault(u => u.UserID == userIDViewModel.UserID);
+            if (userDelete != null)
+            {
+                phanMemHeCanContext.User.Remove(userDelete);
+            }
             return phanMemHeCanContext.SaveChanges();
 
         }

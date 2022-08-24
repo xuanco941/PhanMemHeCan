@@ -1,4 +1,4 @@
-﻿namespace PhanMemHeCan.Models.Car.CarViewModel
+﻿namespace PhanMemHeCan.Models.Car.ViewModels
 {
     public class AddCarViewModel
     {

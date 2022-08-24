@@ -16,7 +16,7 @@ namespace PhanMemHeCan.Controllers
                 rowChanged = TransportBusiness.DeleteTransportFromID(transportIDViewModel);
                 if (rowChanged > 0)
                 {
-                    return Json(new ResponseViewModel<Transport> { status = true, message = "Xóa thành công.", rowsNumberChanged = rowChanged , data = null});
+                    return Json(new ResponseViewModel<Transport> { status = true, message = "Xóa thành công.", rowsNumberChanged = rowChanged, data = null });
                 }
                 return Json(new ResponseViewModel<Transport> { status = false, message = "Xóa không thành công.", rowsNumberChanged = rowChanged, data = null });
             }

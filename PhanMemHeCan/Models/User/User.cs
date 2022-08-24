@@ -33,6 +33,7 @@ namespace PhanMemHeCan.Models.User
         [StringLength(100)]
         public string FullName { get; set; }
         [StringLength(100)]
+        //.ToLower ToTrim
         public string Username { get; set; }
         [StringLength(100)]
         public string Password { get; set; }

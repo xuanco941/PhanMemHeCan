@@ -1,4 +1,4 @@
-﻿namespace PhanMemHeCan.Models.Transport.TransportViewModel
+﻿namespace PhanMemHeCan.Models.Transport.ViewModels
 {
     public class TransportIDViewModel
     {
