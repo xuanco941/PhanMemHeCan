@@ -37,7 +37,7 @@ namespace PhanMemHeCan.Controllers
                 }
                 else
                 {
-                    return Json(new ResponseViewModel<User> { status = false, message = "thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<User> { status = false, message = "Thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
                 }
 
             }

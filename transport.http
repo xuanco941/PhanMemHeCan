@@ -1,0 +1,26 @@
+###
+POST https://localhost:7028/transport/deletetransport
+Content-Type: application/json
+
+{
+    "transportid":4
+}
+
+###
+
+POST https://localhost:7028/transport/addtransport
+Content-Type: application/json
+
+{
+    "ProductName":"xuan",
+    "Customer":"xuan",
+    "ProductWeight":123,
+    "CarWeight":123,
+    "TotalWeight":123,
+    "numberplates":"29H1-299999",
+    "ImagePath":"123",
+    "UsernamePerformer":"xuan" 
+}
+
+###
+GET https://localhost:7028/transport?page=1&timestart=2022-08-01&timeend=2022-09-01
