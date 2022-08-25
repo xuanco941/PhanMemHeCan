@@ -46,6 +46,12 @@ namespace PhanMemHeCan.Models
 
             });
 
+            //car
+            modelBuilder.Entity<Car.Car>(entity =>
+            {
+                entity.HasIndex(e => e.NumberPlates).IsUnique();
+            });
+
             //transport
             modelBuilder.Entity<Transport.Transport>(entity =>
             {

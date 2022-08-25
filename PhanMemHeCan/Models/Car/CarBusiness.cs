@@ -1,5 +1,4 @@
 ﻿using PhanMemHeCan.Models.Car.ViewModels;
-using PhanMemHeCan.Models.Group.ViewModels;
 using System.Data.SqlClient;
 
 namespace PhanMemHeCan.Models.Car
@@ -52,5 +51,14 @@ namespace PhanMemHeCan.Models.Car
             }
             return phanMemHeCanContext.SaveChanges();
         }
+
+
+        public static Car? GetCarFromID(CarIDViewModel carIDViewModel)
+        {
+            PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
+            Car? car = (from c in phanMemHeCanContext.Car where c.CarID == carIDViewModel.CarID select c).FirstOrDefault();
+            return car;
+        }
+
     }
 }

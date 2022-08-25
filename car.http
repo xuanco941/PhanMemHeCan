@@ -1,0 +1,40 @@
+
+POST https://localhost:7028/car/getcarfromid
+Content-Type: application/json
+
+{
+    "carid":2
+}
+
+###
+POST https://localhost:7028/car/addcar
+Content-Type: application/json
+
+{
+    "numberplates":"29H1-29999",
+    "drivername":"Xuan",
+    "CarWeight":200
+}
+
+###
+
+POST https://localhost:7028/car/updatecar
+Content-Type: application/json
+
+{
+    "carid":1,
+    "numberplates":"29H1-299999",
+    "drivername":"Xuan",
+    "CarWeight":200
+}
+
+###
+
+POST https://localhost:7028/car/deletecar
+Content-Type: application/json
+Accept: application/json
+
+{
+    "carID":1
+}
+

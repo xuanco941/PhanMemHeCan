@@ -88,5 +88,21 @@ namespace PhanMemHeCan.Controllers
             }
         }
 
+
+        public IActionResult GetCarFromID([FromBody] CarIDViewModel carIDViewModel)
+        {
+            try
+            {
+                Car? car = CarBusiness.GetCarFromID(carIDViewModel);
+                return Json(new ResponseViewModel<Car> { status = true, message = "success", rowsNumberChanged = 0, data = car });
+            }
+            catch
+            {
+                return Json(new ResponseViewModel<Car> { status = false, message = "error", rowsNumberChanged = 0, data = null });
+            }
+
+        }
+
+
     }
 }
