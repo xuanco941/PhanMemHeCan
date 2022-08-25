@@ -54,7 +54,7 @@ await PhanMemHeCanContext.ResetDatabase();
 GroupBusiness.AddGroup(new PhanMemHeCan.Models.Group.ViewModels.AddGroupViewModel { GroupName = "QUyen Admin", IsManagementGroup = true, IsManagementUser = true });
 UserBusiness.AddUser(new PhanMemHeCan.Models.User.ViewModels.AddUserViewModel { FullName = "DO VAN XUAN", Username = "username", Password = "password", GroupID = 1 });
 CarBusiness.AddCar(new PhanMemHeCan.Models.Car.ViewModels.AddCarViewModel { DriverName = "Nguyen hong son", CarWeight = 198, NumberPlates = "29-1213" });
-TransportBusiness.AddTransport(new PhanMemHeCan.Models.Transport.ViewModels.AddTransportViewModel { ProductName = "Da", CarWeight = 232, Customer = "LeanWay Co.", ImagePath = "abc.jpg", NumberPlates = "12213", ProductWeight = 423, TotalWeight = 213, UsernamePerformer = "xuan" });
+//TransportBusiness.AddTransport(new PhanMemHeCan.Models.Transport.ViewModels.AddTransportViewModel { ProductName = "Da", CarWeight = 232, Customer = "LeanWay Co.", ImagePath = "abc.jpg", NumberPlates = "12213", ProductWeight = 423, TotalWeight = 213, UsernamePerformer = "xuan" });
 
 app.Run();
 

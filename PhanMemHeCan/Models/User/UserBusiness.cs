@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PhanMemHeCan.Models.User.ViewModels;
+﻿using PhanMemHeCan.Models.User.ViewModels;
 using NinjaNye.SearchExtensions;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace PhanMemHeCan.Models.User
@@ -20,7 +18,7 @@ namespace PhanMemHeCan.Models.User
         public static List<User> GetAllUsers()
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var list = (from user in phanMemHeCanContext.User select user).ToList();
+            var list = phanMemHeCanContext.User.ToList();
             return list;
         }
 

@@ -5,7 +5,7 @@ namespace PhanMemHeCan.Models.Transport
 {
     public class TransportPagination
     {
-        public const int NumberResultOnPage = 10;
+        public int numberResultOnPage { get; set; } = 50;
         public int pageCurrent { get; set; }
         public int totalPages { get; set; }
         public int totalResults { get; set; }
@@ -17,10 +17,17 @@ namespace PhanMemHeCan.Models.Transport
         //    int num = phanMemHeCanContext.Transport.OrderByDescending(e => e.TransportID).ToList().Count;
         //    return 1;
         //}
-        public void SearchTransport(int page, string? ProductName, DateTime? TimeStart, DateTime? TimeEnd, double? ProductWeightStart, double? ProductWeightEnd)
+        public void SearchTransport(int page, string? ProductName, DateTime? TimeStart, DateTime? TimeEnd, double? ProductWeightStart, double? ProductWeightEnd, int? NumberResultOnPage)
         {
             PhanMemHeCanContext context = new PhanMemHeCanContext();
-            int position = (page - 1) * NumberResultOnPage;
+
+            if (NumberResultOnPage != null)
+            {
+                this.numberResultOnPage = NumberResultOnPage ?? 50;
+            }
+
+
+            int position = (page - 1) * numberResultOnPage;
             if (ProductName != null && (TimeStart != null && TimeEnd != null) && (ProductWeightStart != null && ProductWeightEnd != null))
             {
                 this.totalResults = context.Transport
@@ -30,7 +37,7 @@ namespace PhanMemHeCan.Models.Transport
                 this.listTransport = context.Transport.OrderByDescending(t => t.TransportID)
                 .Where(t => t.ProductName == ProductName && (t.CreateAt >= TimeStart && t.CreateAt <= TimeEnd) && (t.ProductWeight >= ProductWeightStart && t.ProductWeight <= ProductWeightEnd))
                 .Skip(position)
-                .Take(NumberResultOnPage)
+                .Take(numberResultOnPage)
                 .ToList();
             }
             //1
@@ -43,7 +50,7 @@ namespace PhanMemHeCan.Models.Transport
                 this.listTransport = context.Transport.OrderByDescending(t => t.TransportID)
                 .Where(t => t.ProductName == ProductName)
                 .Skip(position)
-                .Take(NumberResultOnPage)
+                .Take(numberResultOnPage)
                 .ToList();
             }
             else if (ProductName == null && (TimeStart != null && TimeEnd != null) && (ProductWeightStart == null || ProductWeightEnd == null))
@@ -55,7 +62,7 @@ namespace PhanMemHeCan.Models.Transport
                 this.listTransport = context.Transport.OrderByDescending(t => t.TransportID)
                 .Where(t => t.CreateAt >= TimeStart && t.CreateAt <= TimeEnd)
                 .Skip(position)
-                .Take(NumberResultOnPage)
+                .Take(numberResultOnPage)
                 .ToList();
             }
             else if (ProductName == null && (TimeStart == null || TimeEnd == null) && (ProductWeightStart != null && ProductWeightEnd != null))
@@ -67,7 +74,7 @@ namespace PhanMemHeCan.Models.Transport
                 this.listTransport = context.Transport.OrderByDescending(t => t.TransportID)
                 .Where(t => t.ProductWeight >= ProductWeightStart && t.ProductWeight <= ProductWeightEnd)
                 .Skip(position)
-                .Take(NumberResultOnPage)
+                .Take(numberResultOnPage)
                 .ToList();
             }
             //2
@@ -80,7 +87,7 @@ namespace PhanMemHeCan.Models.Transport
                 this.listTransport = context.Transport.OrderByDescending(t => t.TransportID)
                 .Where(t => (t.ProductName == ProductName) && (t.CreateAt >= TimeStart && t.CreateAt <= TimeEnd))
                 .Skip(position)
-                .Take(NumberResultOnPage)
+                .Take(numberResultOnPage)
                 .ToList();
             }
             else if (ProductName != null && (TimeStart == null || TimeEnd == null) && (ProductWeightStart != null && ProductWeightEnd != null))
@@ -92,7 +99,7 @@ namespace PhanMemHeCan.Models.Transport
                 this.listTransport = context.Transport.OrderByDescending(t => t.TransportID)
                 .Where(t => (t.ProductName == ProductName) && (t.ProductWeight >= ProductWeightStart && t.ProductWeight <= ProductWeightEnd))
                 .Skip(position)
-                .Take(NumberResultOnPage)
+                .Take(numberResultOnPage)
                 .ToList();
             }
             else if (ProductName == null && (TimeStart != null && TimeEnd != null) && (ProductWeightStart != null && ProductWeightEnd != null))
@@ -104,7 +111,7 @@ namespace PhanMemHeCan.Models.Transport
                 this.listTransport = context.Transport.OrderByDescending(t => t.TransportID)
                 .Where(t => (t.CreateAt >= TimeStart && t.CreateAt <= TimeEnd) && (t.ProductWeight >= ProductWeightStart && t.ProductWeight <= ProductWeightEnd))
                 .Skip(position)
-                .Take(NumberResultOnPage)
+                .Take(numberResultOnPage)
                 .ToList();
             }
             else
@@ -114,12 +121,12 @@ namespace PhanMemHeCan.Models.Transport
 
                 this.listTransport = context.Transport.OrderByDescending(t => t.TransportID)
                 .Skip(position)
-                .Take(NumberResultOnPage)
+                .Take(numberResultOnPage)
                 .ToList();
             }
 
             this.pageCurrent = page;
-            this.totalPages = (int)Math.Ceiling((float)this.totalResults / (float)NumberResultOnPage);
+            this.totalPages = (int)Math.Ceiling((float)this.totalResults / (float)numberResultOnPage);
 
 
         }

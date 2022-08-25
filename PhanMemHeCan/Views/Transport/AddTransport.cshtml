@@ -34,8 +34,8 @@
         formData.append('UsernamePerformer', 'xuan');
         formData.append('file', files[0], files[0].name);
 
-        fetch('https://localhost:7028/transport/addtransport',{
-            method:'POST',
+        fetch('https://localhost:7028/transport/addtransport', {
+            method: 'POST',
             body: formData
 
         }).then(res => res.json()).then(data => console.log(data));
