@@ -62,5 +62,17 @@ namespace PhanMemHeCan.Models.Group
             }
             return phanMemHeCanContext.SaveChanges();
         }
+
+        public static Group? GetGroupFromGroupName(GroupNameViewModel groupNameViewModel)
+        {
+            PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
+            return phanMemHeCanContext.Group.Where(u => u.GroupName == groupNameViewModel.GroupName).FirstOrDefault();
+        }
+
+        public static List<string>? GetListGroupName()
+        {
+            PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
+            return phanMemHeCanContext.Group.Select(u => u.GroupName).ToList();
+        }
     }
 }

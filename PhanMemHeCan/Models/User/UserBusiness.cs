@@ -15,10 +15,19 @@ namespace PhanMemHeCan.Models.User
 
         }
 
-        public static List<User> GetAllUsers()
+        public static List<UserHasNameGroupViewModel> GetAllUsers()
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            var list = phanMemHeCanContext.User.ToList();
+            var list = (from user in phanMemHeCanContext.User
+                            join gr in phanMemHeCanContext.Group on user.GroupID equals gr.GroupID
+                            select new UserHasNameGroupViewModel
+                            {
+                                UserID = user.UserID,
+                                FullName = user.FullName,
+                                Username = user.Username,
+                                Password = user.Password,
+                                GroupName = gr.GroupName
+                            }).ToList();
             return list;
         }
 
@@ -97,6 +106,20 @@ namespace PhanMemHeCan.Models.User
             return phanMemHeCanContext.SaveChanges();
 
         }
+
+
+        public static User? GetUserFromUsername(UserViewModel userViewModel)
+        {
+            PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
+            return phanMemHeCanContext.User.Where(u => u.Username == userViewModel.Username).FirstOrDefault();
+        }
+
+        public static List<string>? GetListUsername()
+        {
+            PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
+            return phanMemHeCanContext.User.Select(u => u.Username).ToList();
+        }
+
     }
 
 

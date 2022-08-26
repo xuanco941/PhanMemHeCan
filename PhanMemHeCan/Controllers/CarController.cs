@@ -31,16 +31,16 @@ namespace PhanMemHeCan.Controllers
                 rowChanged = CarBusiness.AddCar(addCarViewModel);
                 if (rowChanged > 0)
                 {
-                    return Json(new ResponseViewModel<Car> { status = true, message = "Thêm thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<AddCarViewModel> { status = true, message = "Thêm thành công.", rowsNumberChanged = rowChanged, data = addCarViewModel });
                 }
                 else
                 {
-                    return Json(new ResponseViewModel<Car> { status = false, message = "Thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<AddCarViewModel> { status = false, message = "Thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
                 }
             }
             catch
             {
-                return Json(new ResponseViewModel<Car> { status = false, message = "Lỗi hệ thống, không thể thêm xe.", rowsNumberChanged = rowChanged, data = null });
+                return Json(new ResponseViewModel<AddCarViewModel> { status = false, message = "Lỗi hệ thống, không thể thêm xe.", rowsNumberChanged = rowChanged, data = null });
             }
         }
         [HttpPost]
@@ -53,7 +53,7 @@ namespace PhanMemHeCan.Controllers
                 rowChanged = CarBusiness.UpdateCar(car);
                 if (rowChanged > 0)
                 {
-                    return Json(new ResponseViewModel<Car> { status = true, message = "Cập nhật thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<Car> { status = true, message = "Cập nhật thành công.", rowsNumberChanged = rowChanged, data = car });
                 }
                 else
                 {
@@ -75,7 +75,8 @@ namespace PhanMemHeCan.Controllers
                 rowChanged = CarBusiness.DeleteCar(carIDViewModel);
                 if (rowChanged > 0)
                 {
-                    return Json(new ResponseViewModel<Car> { status = true, message = "Xóa thành công.", rowsNumberChanged = rowChanged, data = null });
+                    Car? car = CarBusiness.GetCarFromID(carIDViewModel);
+                    return Json(new ResponseViewModel<Car> { status = true, message = "Xóa thành công.", rowsNumberChanged = rowChanged, data = car });
                 }
                 else
                 {
@@ -103,6 +104,18 @@ namespace PhanMemHeCan.Controllers
 
         }
 
+        public IActionResult GetAllCars()
+        {
+            try
+            {
+                List<Car>? cars = CarBusiness.GetAllCars();
+                return Json(new ResponseViewModel<List<Car>> { status = true, message = "success", rowsNumberChanged = 0, data = cars });
+            }
+            catch
+            {
+                return Json(new ResponseViewModel<Car> { status = false, message = "error", rowsNumberChanged = 0, data = null });
+            }
+        }
 
     }
 }

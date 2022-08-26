@@ -3,7 +3,7 @@ POST https://localhost:7028/car/getcarfromid
 Content-Type: application/json
 
 {
-    "carid":2
+    "carid":1
 }
 
 ###
@@ -38,3 +38,5 @@ Accept: application/json
     "carID":1
 }
 
+###
+https://localhost:7028/car/getallcars

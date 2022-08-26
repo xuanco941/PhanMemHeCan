@@ -33,17 +33,17 @@ namespace PhanMemHeCan.Controllers
                 rowChanged = UserBusiness.AddUser(addUserViewModel);
                 if (rowChanged > 0)
                 {
-                    return Json(new ResponseViewModel<User> { status = true, message = "Thêm thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<AddUserViewModel> { status = true, message = "Thêm thành công.", rowsNumberChanged = rowChanged, data = addUserViewModel });
                 }
                 else
                 {
-                    return Json(new ResponseViewModel<User> { status = false, message = "Thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<AddUserViewModel> { status = false, message = "Thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
                 }
 
             }
             catch
             {
-                return Json(new ResponseViewModel<User> { status = false, message = "Lỗi hệ thống, không thể thêm tài khoản này.", rowsNumberChanged = rowChanged, data = null });
+                return Json(new ResponseViewModel<AddUserViewModel> { status = false, message = "Lỗi hệ thống, không thể thêm tài khoản này.", rowsNumberChanged = rowChanged, data = null });
             }
         }
 
@@ -57,16 +57,16 @@ namespace PhanMemHeCan.Controllers
                 rowChanged = UserBusiness.UpdateUser(user);
                 if (rowChanged > 0)
                 {
-                    return Json(new ResponseViewModel<User> { status = true, message = "Cập nhật thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<UserViewModel> { status = true, message = "Cập nhật thành công.", rowsNumberChanged = rowChanged, data = user });
                 }
                 else
                 {
-                    return Json(new ResponseViewModel<User> { status = false, message = "Cập nhật không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<UserViewModel> { status = false, message = "Cập nhật không thành công.", rowsNumberChanged = rowChanged, data = null });
                 }
             }
             catch
             {
-                return Json(new ResponseViewModel<User> { status = false, message = "Lỗi hệ thống, không thể cập nhật dữ liệu người dùng này.", rowsNumberChanged = rowChanged, data = null });
+                return Json(new ResponseViewModel<UserViewModel> { status = false, message = "Lỗi hệ thống, không thể cập nhật dữ liệu người dùng này.", rowsNumberChanged = rowChanged, data = null });
             }
         }
 
@@ -83,7 +83,8 @@ namespace PhanMemHeCan.Controllers
                 {
                     //them vao list user has deleted
                     Common.listIdUserHasDeleted.Add(userIDViewModel.UserID);
-                    return Json(new ResponseViewModel<User> { status = true, message = "Xóa thành công.", rowsNumberChanged = rowChanged, data = null });
+                    User? user = UserBusiness.GetUserFromID(userIDViewModel);
+                    return Json(new ResponseViewModel<User> { status = true, message = "Xóa thành công.", rowsNumberChanged = rowChanged, data = user });
                 }
                 else
                 {
@@ -113,9 +114,6 @@ namespace PhanMemHeCan.Controllers
 
         }
 
-
-
-
         [HttpPost]
         public IActionResult FindUserByFullNameOrUsername([FromBody] NameViewModel nameViewModel)
         {
@@ -130,6 +128,21 @@ namespace PhanMemHeCan.Controllers
             }
 
         }
+
+        [HttpGet]
+        public IActionResult GetAllUsers()
+        {
+            try
+            {
+                List<UserHasNameGroupViewModel> users = UserBusiness.GetAllUsers();
+                return Json(new ResponseViewModel<List<UserHasNameGroupViewModel>> { status = true, message = "success", rowsNumberChanged = 0, data = users });
+            }
+            catch
+            {
+                return Json(new ResponseViewModel<UserHasNameGroupViewModel> { status = false, message = "error", rowsNumberChanged = 0, data = null });
+            }
+        }
+
 
     }
 }

@@ -38,3 +38,6 @@ Accept: application/json
     "groupID":1
 }
 
+###
+
+https://localhost:7028/group/getallgroups

@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
     "fullname":"xuan",
-    "username":"Xuânzâav",
+    "username":"Xuânzsâavd",
     "password":"xuan",
     "groupid":1
 }
@@ -35,9 +35,9 @@ POST https://localhost:7028/user/updateuser
 Content-Type: application/json
 
 {
-    "userid":1,
+    "userid":2,
     "fullname":"xuan updateuser a",
-    "username":"xuanupdate",
+    "username":"xxuadnupddatwe",
     "password":"xuan",
     "groupid":1
 }
@@ -52,3 +52,6 @@ Accept: application/json
     "userID":1
 }
 
+###
+
+GET https://localhost:7028/user/getallusers
