@@ -33,7 +33,7 @@ namespace PhanMemHeCan.Models.Group
         public static int AddGroup(AddGroupViewModel group)
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
-            phanMemHeCanContext.Group.Add(new Group ( group.GroupName, group.IsManagementUser, group.IsManagementGroup));
+            phanMemHeCanContext.Group.Add(new Group(group.GroupName, group.IsManagementUser, group.IsManagementGroup));
             return phanMemHeCanContext.SaveChanges();
         }
 
@@ -42,7 +42,7 @@ namespace PhanMemHeCan.Models.Group
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
             var groupUpdate = phanMemHeCanContext.Group.FirstOrDefault(group => group.GroupID == gr.GroupID);
-            if(groupUpdate != null)
+            if (groupUpdate != null)
             {
                 groupUpdate.GroupName = gr.GroupName;
                 groupUpdate.IsManagementUser = gr.IsManagementUser;
@@ -56,7 +56,7 @@ namespace PhanMemHeCan.Models.Group
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
             var groupDelete = phanMemHeCanContext.Group.FirstOrDefault(group => group.GroupID == groupIDViewModel.GroupID);
-            if(groupDelete != null)
+            if (groupDelete != null)
             {
                 phanMemHeCanContext.Group.Remove(groupDelete);
             }
@@ -73,6 +73,22 @@ namespace PhanMemHeCan.Models.Group
         {
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
             return phanMemHeCanContext.Group.Select(u => u.GroupName).ToList();
+        }
+        public static Group? GetRuleUser(int? UserID)
+        {
+            Group? group = null;
+            if (UserID != null)
+            {
+                PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
+                int? groupid = (from u in phanMemHeCanContext.User where u.UserID == UserID select u.GroupID).FirstOrDefault();
+                if (groupid != null)
+                {
+                    group = (from gr in phanMemHeCanContext.Group
+                             where gr.GroupID == groupid
+                             select gr).FirstOrDefault();
+                }
+            }
+            return group;
         }
     }
 }

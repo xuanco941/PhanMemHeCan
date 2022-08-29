@@ -119,7 +119,6 @@ namespace PhanMemHeCan.Models.User
             PhanMemHeCanContext phanMemHeCanContext = new PhanMemHeCanContext();
             return phanMemHeCanContext.User.Select(u => u.Username).ToList();
         }
-
     }
 
 

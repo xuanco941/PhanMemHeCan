@@ -2,6 +2,7 @@
 using PhanMemHeCan.Models.User;
 using PhanMemHeCan.Models.User.ViewModels;
 using PhanMemHeCan.Models;
+using PhanMemHeCan.Models.Group;
 
 namespace PhanMemHeCan.Controllers
 {
@@ -9,15 +10,23 @@ namespace PhanMemHeCan.Controllers
     {
         public IActionResult Index()
         {
-            try
+            Group? group = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (group != null && group.IsManagementUser)
             {
-                ViewBag.Users = UserBusiness.GetAllUsers();
+                try
+                {
+                    ViewBag.Users = UserBusiness.GetAllUsers();
+                }
+                catch
+                {
+                    //Loi
+                }
+                return View();
             }
-            catch
+            else
             {
-                //Loi
+                return Forbid();
             }
-            return View();
         }
 
 
@@ -25,48 +34,64 @@ namespace PhanMemHeCan.Controllers
         [HttpPost]
         public IActionResult AddUser([FromBody] AddUserViewModel addUserViewModel)
         {
-            int rowChanged = 0;
-
-            try
+            Group? group = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (group != null && group.IsManagementUser)
             {
-                //trả về số dòng thay đổi trên database
-                rowChanged = UserBusiness.AddUser(addUserViewModel);
-                if (rowChanged > 0)
-                {
-                    return Json(new ResponseViewModel<AddUserViewModel> { status = true, message = "Thêm thành công.", rowsNumberChanged = rowChanged, data = addUserViewModel });
-                }
-                else
-                {
-                    return Json(new ResponseViewModel<AddUserViewModel> { status = false, message = "Thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
-                }
+                int rowChanged = 0;
 
+                try
+                {
+                    //trả về số dòng thay đổi trên database
+                    rowChanged = UserBusiness.AddUser(addUserViewModel);
+                    if (rowChanged > 0)
+                    {
+                        return Json(new ResponseViewModel<AddUserViewModel> { status = true, message = "Thêm thành công.", rowsNumberChanged = rowChanged, data = addUserViewModel });
+                    }
+                    else
+                    {
+                        return Json(new ResponseViewModel<AddUserViewModel> { status = false, message = "Thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    }
+
+                }
+                catch
+                {
+                    return Json(new ResponseViewModel<AddUserViewModel> { status = false, message = "Lỗi hệ thống, không thể thêm tài khoản này.", rowsNumberChanged = rowChanged, data = null });
+                }
             }
-            catch
+            else
             {
-                return Json(new ResponseViewModel<AddUserViewModel> { status = false, message = "Lỗi hệ thống, không thể thêm tài khoản này.", rowsNumberChanged = rowChanged, data = null });
+                return Forbid();
             }
         }
 
         [HttpPost]
         public IActionResult UpdateUser([FromBody] UserViewModel user)
         {
-            int rowChanged = 0;
-            try
+            Group? group = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (group != null && group.IsManagementUser)
             {
-                //trả về số dòng thay đổi trên database
-                rowChanged = UserBusiness.UpdateUser(user);
-                if (rowChanged > 0)
+                int rowChanged = 0;
+                try
                 {
-                    return Json(new ResponseViewModel<UserViewModel> { status = true, message = "Cập nhật thành công.", rowsNumberChanged = rowChanged, data = user });
+                    //trả về số dòng thay đổi trên database
+                    rowChanged = UserBusiness.UpdateUser(user);
+                    if (rowChanged > 0)
+                    {
+                        return Json(new ResponseViewModel<UserViewModel> { status = true, message = "Cập nhật thành công.", rowsNumberChanged = rowChanged, data = user });
+                    }
+                    else
+                    {
+                        return Json(new ResponseViewModel<UserViewModel> { status = false, message = "Cập nhật không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    }
                 }
-                else
+                catch
                 {
-                    return Json(new ResponseViewModel<UserViewModel> { status = false, message = "Cập nhật không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<UserViewModel> { status = false, message = "Lỗi hệ thống, không thể cập nhật dữ liệu người dùng này.", rowsNumberChanged = rowChanged, data = null });
                 }
             }
-            catch
+            else
             {
-                return Json(new ResponseViewModel<UserViewModel> { status = false, message = "Lỗi hệ thống, không thể cập nhật dữ liệu người dùng này.", rowsNumberChanged = rowChanged, data = null });
+                return Forbid();
             }
         }
 
@@ -75,26 +100,34 @@ namespace PhanMemHeCan.Controllers
         [HttpPost]
         public IActionResult DeleteUser([FromBody] UserIDViewModel userIDViewModel)
         {
-            int rowChanged = 0;
-            try
+            Group? group = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (group != null && group.IsManagementUser)
             {
-                rowChanged = UserBusiness.DeleteUser(userIDViewModel);
-                if (rowChanged > 0)
+                int rowChanged = 0;
+                try
                 {
-                    //them vao list user has deleted
-                    Common.listIdUserHasDeleted.Add(userIDViewModel.UserID);
-                    User? user = UserBusiness.GetUserFromID(userIDViewModel);
-                    return Json(new ResponseViewModel<User> { status = true, message = "Xóa thành công.", rowsNumberChanged = rowChanged, data = user });
-                }
-                else
-                {
-                    return Json(new ResponseViewModel<User> { status = false, message = "Xóa không thành công.", rowsNumberChanged = rowChanged, data = null });
-                }
+                    rowChanged = UserBusiness.DeleteUser(userIDViewModel);
+                    if (rowChanged > 0)
+                    {
+                        //them vao list user has deleted
+                        Common.listIdUserHasDeleted.Add(userIDViewModel.UserID);
+                        User? user = UserBusiness.GetUserFromID(userIDViewModel);
+                        return Json(new ResponseViewModel<User> { status = true, message = "Xóa thành công.", rowsNumberChanged = rowChanged, data = user });
+                    }
+                    else
+                    {
+                        return Json(new ResponseViewModel<User> { status = false, message = "Xóa không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    }
 
+                }
+                catch
+                {
+                    return Json(new ResponseViewModel<User> { status = false, message = "Lỗi hệ thống, không thể xóa dữ liệu người dùng này.", rowsNumberChanged = rowChanged, data = null });
+                }
             }
-            catch
+            else
             {
-                return Json(new ResponseViewModel<User> { status = false, message = "Lỗi hệ thống, không thể xóa dữ liệu người dùng này.", rowsNumberChanged = rowChanged, data = null });
+                return Forbid();
             }
         }
 
@@ -102,14 +135,22 @@ namespace PhanMemHeCan.Controllers
         [HttpPost]
         public IActionResult GetUserFromID([FromBody] UserIDViewModel userIDViewModel)
         {
-            try
+            Group? group = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (group != null && group.IsManagementUser)
             {
-                User? user = UserBusiness.GetUserFromID(userIDViewModel);
-                return Json(new ResponseViewModel<User> { status = true, message = "success", rowsNumberChanged = 0, data = user });
+                try
+                {
+                    User? user = UserBusiness.GetUserFromID(userIDViewModel);
+                    return Json(new ResponseViewModel<User> { status = true, message = "success", rowsNumberChanged = 0, data = user });
+                }
+                catch
+                {
+                    return Json(new ResponseViewModel<User> { status = false, message = "error", rowsNumberChanged = 0, data = null });
+                }
             }
-            catch
+            else
             {
-                return Json(new ResponseViewModel<User> { status = false, message = "error", rowsNumberChanged = 0, data = null });
+                return Forbid();
             }
 
         }
@@ -117,14 +158,22 @@ namespace PhanMemHeCan.Controllers
         [HttpPost]
         public IActionResult FindUserByFullNameOrUsername([FromBody] NameViewModel nameViewModel)
         {
-            try
+            Group? group = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (group != null && group.IsManagementUser)
             {
-                List<User> users = UserBusiness.FindUserByFullNameOrUsername(nameViewModel);
-                return Json(new ResponseViewModel<List<User>> { status = true, message = "success", rowsNumberChanged = 0, data = users });
+                try
+                {
+                    List<User> users = UserBusiness.FindUserByFullNameOrUsername(nameViewModel);
+                    return Json(new ResponseViewModel<List<User>> { status = true, message = "success", rowsNumberChanged = 0, data = users });
+                }
+                catch
+                {
+                    return Json(new ResponseViewModel<User> { status = false, message = "error", rowsNumberChanged = 0, data = null });
+                }
             }
-            catch
+            else
             {
-                return Json(new ResponseViewModel<User> { status = false, message = "error", rowsNumberChanged = 0, data = null });
+                return Forbid();
             }
 
         }
@@ -132,14 +181,22 @@ namespace PhanMemHeCan.Controllers
         [HttpGet]
         public IActionResult GetAllUsers()
         {
-            try
+            Group? group = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (group != null && group.IsManagementUser)
             {
-                List<UserHasNameGroupViewModel> users = UserBusiness.GetAllUsers();
-                return Json(new ResponseViewModel<List<UserHasNameGroupViewModel>> { status = true, message = "success", rowsNumberChanged = 0, data = users });
+                try
+                {
+                    List<UserHasNameGroupViewModel> users = UserBusiness.GetAllUsers();
+                    return Json(new ResponseViewModel<List<UserHasNameGroupViewModel>> { status = true, message = "success", rowsNumberChanged = 0, data = users });
+                }
+                catch
+                {
+                    return Json(new ResponseViewModel<UserHasNameGroupViewModel> { status = false, message = "error", rowsNumberChanged = 0, data = null });
+                }
             }
-            catch
+            else
             {
-                return Json(new ResponseViewModel<UserHasNameGroupViewModel> { status = false, message = "error", rowsNumberChanged = 0, data = null });
+                return Forbid();
             }
         }
 

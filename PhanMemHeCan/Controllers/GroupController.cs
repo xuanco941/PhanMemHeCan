@@ -9,94 +9,136 @@ namespace PhanMemHeCan.Controllers
     {
         public IActionResult Index()
         {
-            try
+            Group? group = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (group != null && group.IsManagementGroup)
             {
-                ViewBag.Groups = GroupBusiness.GetAllGroups();
+                try
+                {
+                    ViewBag.Groups = GroupBusiness.GetAllGroups();
+                }
+                catch
+                {
+                    //Lỗi
+                }
+                return View();
             }
-            catch
+            else
             {
-                //Lỗi
+                return Forbid();
             }
-            return View();
+
         }
 
         //Thêm
         [HttpPost]
         public IActionResult AddGroup([FromBody] AddGroupViewModel addGroupViewModel)
         {
-            int rowChanged = 0;
-            try
+            Group? group = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (group != null && group.IsManagementGroup)
             {
-                //trả về số dòng thay đổi trên database
-                rowChanged = GroupBusiness.AddGroup(addGroupViewModel);
-                if (rowChanged > 0)
+                int rowChanged = 0;
+                try
                 {
-                    return Json(new ResponseViewModel<AddGroupViewModel> { status = true, message = "Thêm thành công.", rowsNumberChanged = rowChanged, data = addGroupViewModel });
+                    //trả về số dòng thay đổi trên database
+                    rowChanged = GroupBusiness.AddGroup(addGroupViewModel);
+                    if (rowChanged > 0)
+                    {
+                        return Json(new ResponseViewModel<AddGroupViewModel> { status = true, message = "Thêm thành công.", rowsNumberChanged = rowChanged, data = addGroupViewModel });
+                    }
+                    else
+                    {
+                        return Json(new ResponseViewModel<AddGroupViewModel> { status = false, message = "Thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    }
                 }
-                else
+                catch
                 {
-                    return Json(new ResponseViewModel<AddGroupViewModel> { status = false, message = "Thêm không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<AddGroupViewModel> { status = false, message = "Lỗi hệ thống, không thể thêm nhóm quyền.", rowsNumberChanged = rowChanged, data = null });
                 }
             }
-            catch
+            else
             {
-                return Json(new ResponseViewModel<AddGroupViewModel> { status = false, message = "Lỗi hệ thống, không thể thêm nhóm quyền.", rowsNumberChanged = rowChanged, data = null });
+                return Forbid();
             }
+
         }
         [HttpPost]
         public IActionResult UpdateGroup([FromBody] Group group)
         {
-            int rowChanged = 0;
-            try
+            Group? gr = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (gr != null && gr.IsManagementGroup)
             {
-                rowChanged = GroupBusiness.UpdateGroup(group);
-                if (rowChanged > 0)
+                int rowChanged = 0;
+                try
                 {
-                    return Json(new ResponseViewModel<Group> { status = true, message = "Cập nhật thành công.", rowsNumberChanged = rowChanged, data = group });
+                    rowChanged = GroupBusiness.UpdateGroup(group);
+                    if (rowChanged > 0)
+                    {
+                        return Json(new ResponseViewModel<Group> { status = true, message = "Cập nhật thành công.", rowsNumberChanged = rowChanged, data = group });
+                    }
+                    else
+                    {
+                        return Json(new ResponseViewModel<Group> { status = false, message = "Cập nhật không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    }
                 }
-                else
+                catch
                 {
-                    return Json(new ResponseViewModel<Group> { status = false, message = "Cập nhật không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<Group> { status = false, message = "Lỗi hệ thống, không thể cập nhật.", rowsNumberChanged = rowChanged, data = null });
                 }
             }
-            catch
+            else
             {
-                return Json(new ResponseViewModel<Group> { status = false, message = "Lỗi hệ thống, không thể cập nhật.", rowsNumberChanged = rowChanged, data = null });
+                return Forbid();
             }
         }
         [HttpPost]
         public IActionResult DeleteGroup([FromBody] GroupIDViewModel groupIDViewModel)
         {
-            int rowChanged = 0;
-            try
+            Group? gr = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (gr != null && gr.IsManagementGroup)
             {
-                rowChanged = GroupBusiness.DeleteGroup(groupIDViewModel);
-                if (rowChanged > 0)
+                int rowChanged = 0;
+                try
                 {
-                    Group? group = GroupBusiness.GetGroupFromID(groupIDViewModel);
-                    return Json(new ResponseViewModel<Group> { status = true, message = "Xóa thành công.", rowsNumberChanged = rowChanged, data = group });
+                    rowChanged = GroupBusiness.DeleteGroup(groupIDViewModel);
+                    if (rowChanged > 0)
+                    {
+                        Group? group = GroupBusiness.GetGroupFromID(groupIDViewModel);
+                        return Json(new ResponseViewModel<Group> { status = true, message = "Xóa thành công.", rowsNumberChanged = rowChanged, data = group });
+                    }
+                    else
+                    {
+                        return Json(new ResponseViewModel<Group> { status = false, message = "Xóa không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    }
                 }
-                else
+                catch
                 {
-                    return Json(new ResponseViewModel<Group> { status = false, message = "Xóa không thành công.", rowsNumberChanged = rowChanged, data = null });
+                    return Json(new ResponseViewModel<Group> { status = false, message = "Lỗi hệ thống, không thể xóa.", rowsNumberChanged = rowChanged, data = null });
                 }
             }
-            catch
+            else
             {
-                return Json(new ResponseViewModel<Group> { status = false, message = "Lỗi hệ thống, không thể xóa.", rowsNumberChanged = rowChanged, data = null });
+                return Forbid();
             }
         }
         [HttpPost]
         public IActionResult GetGroupFromID([FromBody] GroupIDViewModel groupIDViewModel)
         {
-            try
+            Group? gr = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (gr != null && gr.IsManagementGroup)
             {
-                Group? group = GroupBusiness.GetGroupFromID(groupIDViewModel);
-                return Json(new ResponseViewModel<Group> { status = true, message = "success", rowsNumberChanged = 0, data = group });
+                try
+                {
+                    Group? group = GroupBusiness.GetGroupFromID(groupIDViewModel);
+                    return Json(new ResponseViewModel<Group> { status = true, message = "success", rowsNumberChanged = 0, data = group });
+                }
+                catch
+                {
+                    return Json(new ResponseViewModel<Group> { status = false, message = "error", rowsNumberChanged = 0, data = null });
+                }
             }
-            catch
+            else
             {
-                return Json(new ResponseViewModel<Group> { status = false, message = "error", rowsNumberChanged = 0, data = null });
+                return Forbid();
             }
 
         }
@@ -105,27 +147,43 @@ namespace PhanMemHeCan.Controllers
         [HttpPost]
         public IActionResult FindGroupByName([FromBody] GroupNameViewModel groupNameViewModel)
         {
-            try
+            Group? gr = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (gr != null && gr.IsManagementGroup)
             {
-                List<Group> groups = GroupBusiness.FindGroupByName(groupNameViewModel);
-                return Json(new ResponseViewModel<List<Group>> { status = true, message = "success", rowsNumberChanged = 0, data = groups });
+                try
+                {
+                    List<Group> groups = GroupBusiness.FindGroupByName(groupNameViewModel);
+                    return Json(new ResponseViewModel<List<Group>> { status = true, message = "success", rowsNumberChanged = 0, data = groups });
+                }
+                catch
+                {
+                    return Json(new ResponseViewModel<List<Group>> { status = true, message = "error", rowsNumberChanged = 0, data = null });
+                }
             }
-            catch
+            else
             {
-                return Json(new ResponseViewModel<List<Group>> { status = true, message = "error", rowsNumberChanged = 0, data = null });
+                return Forbid();
             }
         }
 
         public IActionResult GetAllGroups()
         {
-            try
+            Group? gr = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
+            if (gr != null && gr.IsManagementGroup)
             {
-                List<Group>? groups = GroupBusiness.GetAllGroups();
-                return Json(new ResponseViewModel<List<Group>> { status = true, message = "success", rowsNumberChanged = 0, data = groups });
+                try
+                {
+                    List<Group>? groups = GroupBusiness.GetAllGroups();
+                    return Json(new ResponseViewModel<List<Group>> { status = true, message = "success", rowsNumberChanged = 0, data = groups });
+                }
+                catch
+                {
+                    return Json(new ResponseViewModel<List<Group>> { status = true, message = "error", rowsNumberChanged = 0, data = null });
+                }
             }
-            catch
+            else
             {
-                return Json(new ResponseViewModel<List<Group>> { status = true, message = "error", rowsNumberChanged = 0, data = null });
+                return Forbid();
             }
         }
 
