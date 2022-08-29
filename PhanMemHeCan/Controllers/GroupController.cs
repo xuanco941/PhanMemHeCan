@@ -24,7 +24,7 @@ namespace PhanMemHeCan.Controllers
             }
             else
             {
-                return Forbid();
+                return StatusCode(StatusCodes.Status403Forbidden);
             }
 
         }
@@ -57,7 +57,7 @@ namespace PhanMemHeCan.Controllers
             }
             else
             {
-                return Forbid();
+                return StatusCode(StatusCodes.Status403Forbidden);
             }
 
         }
@@ -87,7 +87,7 @@ namespace PhanMemHeCan.Controllers
             }
             else
             {
-                return Forbid();
+                return StatusCode(StatusCodes.Status403Forbidden);
             }
         }
         [HttpPost]
@@ -117,7 +117,7 @@ namespace PhanMemHeCan.Controllers
             }
             else
             {
-                return Forbid();
+                return StatusCode(StatusCodes.Status403Forbidden);
             }
         }
         [HttpPost]
@@ -138,7 +138,7 @@ namespace PhanMemHeCan.Controllers
             }
             else
             {
-                return Forbid();
+                return StatusCode(StatusCodes.Status403Forbidden);
             }
 
         }
@@ -162,7 +162,7 @@ namespace PhanMemHeCan.Controllers
             }
             else
             {
-                return Forbid();
+                return StatusCode(StatusCodes.Status403Forbidden);
             }
         }
 
@@ -183,7 +183,7 @@ namespace PhanMemHeCan.Controllers
             }
             else
             {
-                return Forbid();
+                return StatusCode(StatusCodes.Status403Forbidden);
             }
         }
 
