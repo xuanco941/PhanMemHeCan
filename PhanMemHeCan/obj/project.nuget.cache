@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MYCsOdLmhq5GASe40syoXYlxobXX/9P6gYuLnXttjGPJZPYngGj3AoGZ/NEEbf6EhadMdKE/W6cDzp4Fj9Hyuw==",
+  "dgSpecHash": "/NCqfAYBN2l1MBtr/o27cNtfAdHyh3jFT/QUEykklRxUHqEg/kqwnhMQcd4OF4LVP8NFs96c/F+FSy0MWiWtDg==",
   "success": true,
-  "projectFilePath": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\TestEF\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj",
+  "projectFilePath": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\xuanc\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\xuanc\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

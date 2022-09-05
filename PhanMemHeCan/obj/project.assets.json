@@ -6770,11 +6770,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\TestEF\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj",
+      "projectUniqueName": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj",
       "projectName": "PhanMemHeCan",
-      "projectPath": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\TestEF\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj",
+      "projectPath": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj",
       "packagesPath": "C:\\Users\\xuanc\\.nuget\\packages\\",
-      "outputPath": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\TestEF\\PhanMemHeCan\\PhanMemHeCan\\obj\\",
+      "outputPath": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\xuanc\\AppData\\Roaming\\NuGet\\NuGet.Config",

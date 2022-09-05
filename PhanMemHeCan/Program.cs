@@ -46,8 +46,8 @@ app.MapControllerRoute(
     pattern: "{controller=Authentication}/{action=Index}/{id?}");
 
 // dung middleware xac nhan da dang nhap chua
-//app.UseRemoveSessionDeadMiddleware();
-//app.UseAuthMiddleware();
+app.UseRemoveSessionDeadMiddleware();
+app.UseAuthMiddleware();
 
 await PhanMemHeCanContext.ResetDatabase();
 GroupBusiness.AddGroup(new PhanMemHeCan.Models.Group.ViewModels.AddGroupViewModel { GroupName = "Quyền Admin", IsManagementGroup = true, IsManagementUser = true });

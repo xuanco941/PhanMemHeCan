@@ -1,45 +1,220 @@
-﻿<input type="file" name="file" id="file">
-<img id="img" />
-<button id="submit">Submit</button>
+﻿@{
+    Layout = "_Layout";
+}
 
 
-<script>
-    let file = document.querySelector('#file');
-    let img = document.querySelector('#img');
-    let submit = document.querySelector('#submit');
+<div class="fuction">
+    <div class="row ">
+        <div class="col-4 n01 ">
+            <!-- <p class="text-center btn-primary btn-add"><a href="ThemXeChoHang.html" class="text-white">Thêm mới</i></a></p> -->
+            <!-- Button trigger modal -->
+            <!-- Button  modal -->
+            <button type="button" class="btn btn-primary" id="btn_Them" style="font-size: 20px; height: 50px; width: 120px;">
+                Thêm mới
+            </button>
+            <!-- Modal -->
+            <div class="modal" id="ModalThem">
+                <div class="modal_content">
+                    <!-- header -->
+                    <span class="close">&times;</span>
+                    <h4 style="text-align:center;" class="fw-bold">Thêm thông tin xe chở hàng</h4>
 
-    let files = [];
-    function isFileImage(file) {
-        return file && file['type'].split('/')[0] === 'image';
-    }
-    const handleOnChangeInputImg = (e) => {
-        files = Array.from(e.target.files).filter(f => isFileImage(f) === true)
-        files.forEach(element => {
-            element.preview = URL.createObjectURL(element);
-        });
+                    <!-- body -->
+                    <form action="" method="post">
+                        <!-- <div class="mb-3">
+                            <label for="" class="form-label">ID_Xe</label>
+                            <input type="text" class="form-control" id="" name="">
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="" class="form-label">Trọng lượng xe</label>
+                            <input type="text" class="form-control" id="" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Tên người lái</label>
+                            <input type="text" class="form-control" id="" name="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Biển số xe</label>
+                            <input type="text" class="form-control" id="" name="">
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary btn-lg">Lưu</button>
+                        </div>
+                        <!-- <button type="button" class="btn btn-primary"> <a href="QuanLyNhanVien.html" class="text-white ">Quay lại</a></button> -->
+                    </form>
+                </div>
+            </div>
 
+        </div>
+        <div class="col-4"></div>
+        <div class=" col-4  d-flex justify-content-end">
+            <!-- <button class="btn btn-primary " type="button" style="font-size: 20px; height: 50px; width: 150px;">Tìm kiếm</button> -->
+            <form class="TimKiem" action="#">
+                <input type="text" placeholder="Nhập thông tin tìm kiếm" class="input_tk">
+                <a href="#" class="iconTK"><i class="bi bi-search"></i></a>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="Table_User">
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID_Xe</th>
+                <th scope="col">Trọng lượng xe</th>
+                <th scope="col">Tên người lái</th>
+                <th scope="col">Biển số xe</th>
+                <th scope="col">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>120</td>
+                <td>Otto</td>
+                <td>30D-1845</td>
+                <td>
+                    <!-- <p class="text-center btn-success "><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
+                    <button type="button" class="btn btn-primary" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <div class="modal" id="ModalSua">
+                        <div class="modal_content">
+                            <!-- header -->
+                            <span class="closeS">&times;</span>
+                            <h4 style="text-align:center;" class="fw-bold">Sửa thông tin xe hàng</h4>
 
-        img.src = files[0].preview;
-    }
-    file.addEventListener('change', (e) => handleOnChangeInputImg(e));
+                            <!-- body -->
+                            <form action="" method="post">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Trọng lượng xe</label>
+                                    <input type="text" class="form-control" id="" name="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Tên người lái</label>
+                                    <input type="text" class="form-control" id="" name="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Biển số xe</label>
+                                    <input type="text" class="form-control" id="" name="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Tên nhóm quyền</label>
+                                    <input type="text" class="form-control" id="" name="">
+                                </div>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="button" class="btn btn-primary btn-lg">Lưu</button>
+                                </div>
+                            </form>
 
-    submit.onclick = () => {
-        let formData = new FormData();
-        formData.append('ProductName', '123123');
-        formData.append('Customer', '21312');
-        formData.append('ProductWeight', 123);
-        formData.append('CarWeight', 213);
-        formData.append('TotalWeight', 213);
-        formData.append('numberplates', '213123');
-        formData.append('UsernamePerformer', 'xuan');
-        formData.append('file', files[0], files[0].name);
+                        </div>
+                    </div>
+                    <!-- <p class="text-center btn-danger "><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
+                    <button type="button" class="btn btn-primary" id="btn_Xoa" style=" width: 40px; height: 40px;">
+                        <i class="bi bi-person-x"></i>
+                    </button>
+                    <div class="modal" id="Xoa">
+                        <div class="modal_content">
+                            <!-- header -->
+                            <span class="closeX">&times;</span>
+                            <!-- <h5 class="fw-bold">Thông báo</h5> -->
+                            <!-- body -->
+                            <p class="fw-bold">Bạn chắc chắn muốn xóa ?</p>
+                            <!-- footer -->
+                            <button type="button" class="btn btn-primary">Có</button>
+                            <!-- <button type="button" class="btn btn-secondary " id="btnK" >Không</button> -->
+                        </div>
+                    </div>
+                    <!-- end modal -->
+                </td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>200</td>
+                <td>Thornton</td>
+                <td>17C-82481</td>
+                <td>
+                    <!-- <p class="text-center btn-success"><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
+                    <button type="button" class="btn btn-primary" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <!-- <p class="text-center btn-danger"><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
+                    <button type="button" class="btn btn-primary" id="btn_Xoa" style=" width: 40px; height: 40px;">
+                        <i class="bi bi-person-x"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>250</td>
+                <td>twitter</td>
+                <td>27C-82548</td>
+                <td>
+                    <!-- <p class="text-center btn-success"><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
+                    <button type="button" class="btn btn-primary" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <!-- <p class="text-center btn-danger"><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
+                    <button type="button" class="btn btn-primary" id="btn_Xoa" style=" width: 40px; height: 40px;">
+                        <i class="bi bi-person-x"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-        fetch('https://localhost:7028/transport/addtransport',{
-            method:'POST',
-            body: formData
+<!-- <div class="page">
+    <div class="row r_page">
+        <div class="d-grid gap-2 d-md-block col"></div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end col-3">
+            <button class="btn btn-primary me-md-2 bt01" type="button">Trước</button>
+            <select class="form-select bt01"  >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            <button class="btn btn-primary bt01" type="button">Sau</button>
+        </div>
+    </div>
+</div> -->
+<!-- Modal -->
+<div class="modal fade show_modal" id="ModalThem">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thêm xe chở hàng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    <div class="mb-3">
+                        <label for="id_xe" class="form-label">ID_Xe</label>
+                        <input type="text" class="form-control" id="id_xe" name="id_xe">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Can_Xe" class="form-label">Trọng lượng xe</label>
+                        <input type="text" class="form-control" id="Can_Xe" name="Can_Xe">
+                    </div>
+                    <div class="mb-3">
+                        <label for="TenLaiXe" class="form-label">Tên người lái</label>
+                        <input type="text" class="form-control" id="TenLaiXe" name="TenLaiXe">
+                    </div>
+                    <div class="mb-3">
+                        <label for="BienSo" class="form-label">Biển số xe</label>
+                        <input type="text" class="form-control" id="BienSo" name="BienSo">
+                    </div>
 
-        }).then(res => res.json()).then(data => console.log(data));
-    }
-
-
-</script>
+                    <!-- <button type="submit" class="btn btn-primary">Lưu</button> -->
+                    <!-- <button type="button" class="btn btn-primary"> <a href="QuanLyNhanVien.html" class="text-white ">Quay lại</a></button> -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Lưu</button>
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button> -->
+            </div>
+        </div>
+    </div>
+</div>

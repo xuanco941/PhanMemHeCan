@@ -1,62 +1,69 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <link rel="shortcut icon" href="~/img/icon.png">
+    <title>Đăng nhập</title>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/lib/bootstrap_min.css">
-    <link rel="stylesheet" href="~/css/Light/MainLight.css">
-    <link rel="stylesheet" href="~/css/Login.css" />
-    <link rel="shortcut icon" href="~/img/logo.png" type="image/x-icon">
-    <title>Đăng nhập hệ thống</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/Login/main.css">
+    <link rel="stylesheet" type="text/css" href="~/css/Login/util.css">
+    <!--===============================================================================================-->
 </head>
-
 <body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="~/img/login.png" alt="IMG">
+                </div>
+                <form class="login100-form validate-form" method="post" asp-controller="Authentication" asp-action="Login">
+                    <span class="login100-form-title">
+                        Hệ thống đăng nhập
+                    </span>
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="text" name="username" value="@TempData["usernameRecent"]" placeholder="Tài khoản" required oninvalid="this.setCustomValidity('Bạn cần điền tên đăng nhập')" oninput="this.setCustomValidity('')">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="password" value="@TempData["passwordRecent"]" name="password" placeholder="Mật khẩu" required oninvalid="this.setCustomValidity('Bạn cần điền mật khẩu')" oninput="this.setCustomValidity('')">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
 
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-            <!-- Tabs Titles -->
-            <!-- Icon -->
-            <div class="fadeIn first">
-                <img style="max-width:45%;" src="~/img/users.svg" id="icon" alt="User Icon" />
+                    <div style="color: red;">
+                        @TempData["messageLogin"];
+                    </div>
+
+
+                    <div class="container-login100-form-btn">
+                        <input class="login100-form-btn" type="submit" name="submit" value="Đăng nhập">
+                    </div>
+
+                    <div class="text-center p-t-136">
+                    </div>
+                </form>
             </div>
-            <!-- Login Form -->
-            <form asp-action="Login" asp-controller="Authentication" method="post" enctype="multipart/form-data">
-                @if (TempData["usernameRecent"] == null && TempData["passwordRecent"] == null)
-                {
-                    <input type="text" required id="login" class="fadeIn second" name="username" placeholder="Tài khoản">
-                    <input type="password" required class="fadeIn third" name="password" placeholder="Mật khẩu">
-                }
-                else
-                {
-                    <input value="@TempData["usernameRecent"]" type="text" required id="login" class="fadeIn second" name="username" placeholder="Tài khoản">
-                    <input value="@TempData["passwordRecent"]" type="password" required class="fadeIn third" name="password" placeholder="Mật khẩu">
-                }
-
-                @if (TempData["messageLogin"] != null)
-                {
-                    <div style="color:red; font-size:85%">@TempData["messageLogin"]</div>
-                }
-                <input type="submit" class="fadeIn fourth" value="Đăng nhập">
-            </form>
-
-            @*    <!-- Remind Passowrd -->
-            <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
-            </div>*@
-
         </div>
     </div>
-    <script>
-        document.querySelector('#login').focus();
-    </script>
+    <!--===============================================================================================-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!--===============================================================================================-->
+    <script src=@Html.Raw("https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js") integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <script src="vendor/tilt/tilt.jquery.min.js"></script>
+    <!--===============================================================================================-->
 </body>
-
 </html>
-
-
-
-
-
