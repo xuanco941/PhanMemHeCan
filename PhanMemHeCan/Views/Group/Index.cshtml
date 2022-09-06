@@ -10,39 +10,6 @@
             <button type="button" class="btn btn-primary" id="btn_Them" style="font-size: 20px; width: 120px; height: 50px;">
                 Thêm mới
             </button>
-            <!-- Modal -->
-            <div class="modal" id="ModalThem">
-                <div class="modal_content">
-                    <!-- header -->
-                    <span class="close">&times;</span>
-                    <h4 style="text-align:center;" class="fw-bold">Thêm nhóm quyền</h4>
-
-                    <!-- body -->
-                    <form action="" method="post">
-                        <!-- <div class="mb-3">
-                            <label for="" class="form-label">ID_NhomQuuyen</label>
-                            <input type="text" class="form-control" id="" name="">
-                        </div> -->
-                        <div class="mb-3">
-                            <label for="" class="form-label">Tên nhóm quyền</label>
-                            <input type="text" class="form-control" id="" name="">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">A</label>
-                            <input type="text" class="form-control" id="" name="">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">B</label>
-                            <input type="text" class="form-control" id="" name="">
-                        </div>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-primary btn-lg">Lưu</button>
-                        </div>
-                        <!-- <button type="button" class="btn btn-primary"> <a href="QuanLyNhanVien.html" class="text-white ">Quay lại</a></button> -->
-                    </form>
-                </div>
-            </div>
-            <!-- end col           -->
         </div>
         <div class="col-4"></div>
         <div class=" col-4  d-flex justify-content-end">
@@ -76,52 +43,12 @@
                     <button type="button" class="btn btn-primary" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
                         <i class="bi bi-pencil-square"></i>
                     </button>
-                    <!-- modal sua -->
-                    <div class="modal" id="ModalSua">
-                        <div class="modal_content">
-                            <!-- header -->
-                            <span class="closeS">&times;</span>
-                            <h4 style="text-align:center;" class="fw-bold">Sửa thông tin nhóm quyền</h4>
-
-                            <!-- body -->
-                            <form action="" method="post">
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Tên nhóm quyền</label>
-                                    <input type="text" class="form-control" id="" name="">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label">A</label>
-                                    <input type="text" class="form-control" id="" name="">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label">B</label>
-                                    <input type="text" class="form-control" id="" name="">
-                                </div>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button type="button" class="btn btn-primary btn-lg">Lưu</button>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-
+                    
                     <!-- <p class="text-center btn-danger "><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
                     <button type="button" class="btn btn-primary" id="btn_Xoa" style=" width: 40px; height: 40px;">
                         <i class="bi bi-person-x"></i>
                     </button>
-                    <div class="modal" id="Xoa">
-                        <div class="modal_content">
-                            <!-- header -->
-                            <span class="closeX">&times;</span>
-                            <!-- <h5 class="fw-bold">Thông báo</h5> -->
-                            <!-- body -->
-                            <p class="fw-bold">Bạn chắc chắn muốn xóa ?</p>
-                            <!-- footer -->
-                            <button type="button" class="btn btn-primary">Có</button>
-                            <!-- <button type="button" class="btn btn-secondary "  id="khong">Không</button> -->
-                        </div>
-                    </div>
-                    <!-- end modal -->
+                    
                 </td>
             </tr>
             <tr>
@@ -174,3 +101,80 @@
         </div>
     </div>
 </div> -->
+<!-- Modal thêm-->
+<div class="modal" id="ModalThem">
+    <div class="modal_content">
+        <!-- header -->
+        <span class="close">&times;</span>
+        <h4 style="text-align:center;" class="fw-bold">Thêm nhóm quyền</h4>
+
+        <!-- body -->
+        <form action="" method="post">
+            <!-- <div class="mb-3">
+                <label for="" class="form-label">ID_NhomQuuyen</label>
+                <input type="text" class="form-control" id="" name="">
+            </div> -->
+            <div class="mb-3">
+                <label for="" class="form-label">Tên nhóm quyền</label>
+                <input type="text" class="form-control" id="" name="">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">A</label>
+                <input type="text" class="form-control" id="" name="">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">B</label>
+                <input type="text" class="form-control" id="" name="">
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-primary btn-lg">Lưu</button>
+            </div>
+            <!-- <button type="button" class="btn btn-primary"> <a href="QuanLyNhanVien.html" class="text-white ">Quay lại</a></button> -->
+        </form>
+    </div>
+</div>
+<!-- end col           -->
+<!-- modal sua -->
+<div class="modal" id="ModalSua">
+    <div class="modal_content">
+        <!-- header -->
+        <span class="closeS">&times;</span>
+        <h4 style="text-align:center;" class="fw-bold">Sửa thông tin nhóm quyền</h4>
+
+        <!-- body -->
+        <form action="" method="post">
+            <div class="mb-3">
+                <label for="" class="form-label">Tên nhóm quyền</label>
+                <input type="text" class="form-control" id="" name="">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">A</label>
+                <input type="text" class="form-control" id="" name="">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">B</label>
+                <input type="text" class="form-control" id="" name="">
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-primary btn-lg">Lưu</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+<!--Modal xóa-->
+<div class="modal" id="Xoa">
+    <div class="modal_content">
+        <!-- header -->
+        <span class="closeX">&times;</span>
+        <!-- <h5 class="fw-bold">Thông báo</h5> -->
+        <!-- body -->
+        <p class="fw-bold" style="text-align:center">Bạn chắc chắn muốn xóa ?</p>
+        <!-- footer -->
+        <div class="d-grid col-3 mx-auto">
+            <button type="button" class="btn btn-primary">Có</button>
+        </div>
+        <!-- <button type="button" class="btn btn-secondary "  id="khong">Không</button> -->
+    </div>
+</div>
+<!-- end modal -->

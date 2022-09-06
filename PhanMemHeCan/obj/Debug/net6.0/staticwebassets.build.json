@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2pQ7QXX6F1ZU11qz4S8MN4G/4y29W8pt4Nvv+nyVCvw=",
+  "Hash": "bzfQsMMOgMmC3rXBOeAsrPWl+j4Aq0e89l0xntF/ums=",
   "Source": "PhanMemHeCan",
   "BasePath": "_content/PhanMemHeCan",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "PhanMemHeCan\\wwwroot",
       "Source": "PhanMemHeCan",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\obj\\Debug\\net6.0\\scopedcss\\bundle\\PhanMemHeCan.styles.css",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\obj\\Debug\\net6.0\\scopedcss\\bundle\\PhanMemHeCan.styles.css",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "PhanMemHeCan.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\obj\\Debug\\net6.0\\scopedcss\\bundle\\PhanMemHeCan.styles.css"
+      "OriginalItemSpec": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\obj\\Debug\\net6.0\\scopedcss\\bundle\\PhanMemHeCan.styles.css"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\PhanMemHeCan.bundle.scp.css",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\PhanMemHeCan.bundle.scp.css",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "PhanMemHeCan.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\PhanMemHeCan.bundle.scp.css"
+      "OriginalItemSpec": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\PhanMemHeCan.bundle.scp.css"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\audio\\error.mp3",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\audio\\error.mp3",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "audio/error.mp3",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\audio\\error.mp3"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\audio\\toast.mp3",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\audio\\toast.mp3",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "audio/toast.mp3",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\audio\\toast.mp3"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\css\\Login\\main.css",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\css\\Login\\main.css",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "css/Login/main.css",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Login\\main.css"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\css\\Login\\util.css",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\css\\Login\\util.css",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "css/Login/util.css",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Login\\util.css"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\css\\root.css",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\css\\root.css",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "css/root.css",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\css\\root.css"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\css\\style.css",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\css\\style.css",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "css/style.css",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\img\\icon.png",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\img\\icon.png",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "img/icon.png",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\img\\icon.png"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\img\\icontk.png",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\img\\icontk.png",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "img/icontk.png",
       "AssetKind": "All",
@@ -187,27 +187,10 @@
       "OriginalItemSpec": "wwwroot\\img\\icontk.png"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\img\\logo.png",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\img\\login.png",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
-      "BasePath": "_content/PhanMemHeCan",
-      "RelativePath": "img/logo.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\logo.png"
-    },
-    {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\img\\login.png",
-      "SourceId": "PhanMemHeCan",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "img/login.png",
       "AssetKind": "All",
@@ -221,10 +204,27 @@
       "OriginalItemSpec": "wwwroot\\img\\login.png"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\img\\users.svg",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\img\\logo.png",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "BasePath": "_content/PhanMemHeCan",
+      "RelativePath": "img/logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\logo.png"
+    },
+    {
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\img\\users.svg",
+      "SourceId": "PhanMemHeCan",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "img/users.svg",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\img\\users.svg"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\js\\script.js",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\js\\script.js",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "js/script.js",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\js\\script.js"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\bootstrap_bundle_min.js",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\bootstrap_bundle_min.js",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "lib/bootstrap_bundle_min.js",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap_bundle_min.js"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\bootstrap_min.css",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\bootstrap_min.css",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "lib/bootstrap_min.css",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap_min.css"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\bootstrap_min.js",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\bootstrap_min.js",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "lib/bootstrap_min.js",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap_min.js"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\ChartJS\\chartjs.min.js",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\ChartJS\\chartjs.min.js",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "lib/ChartJS/chartjs.min.js",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\ChartJS\\chartjs.min.js"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\jquery3_2_1.js",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\jquery3_2_1.js",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "lib/jquery3_2_1.js",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery3_2_1.js"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\popper.js",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\popper.js",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "lib/popper.js",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\popper.js"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\table2excel.js",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\table2excel.js",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "lib/table2excel.js",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\table2excel.js"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\the-datepicker\\the-datepicker.css",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\the-datepicker\\the-datepicker.css",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "lib/the-datepicker/the-datepicker.css",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\the-datepicker\\the-datepicker.css"
     },
     {
-      "Identity": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\the-datepicker\\the-datepicker.js",
+      "Identity": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\lib\\the-datepicker\\the-datepicker.js",
       "SourceId": "PhanMemHeCan",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
+      "ContentRoot": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\wwwroot\\",
       "BasePath": "_content/PhanMemHeCan",
       "RelativePath": "lib/the-datepicker/the-datepicker.js",
       "AssetKind": "All",
