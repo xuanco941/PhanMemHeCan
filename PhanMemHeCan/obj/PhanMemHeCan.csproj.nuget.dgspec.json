@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj": {}
+    "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj": {}
   },
   "projects": {
-    "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj": {
+    "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj",
+        "projectUniqueName": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj",
         "projectName": "PhanMemHeCan",
-        "projectPath": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj",
-        "packagesPath": "C:\\Users\\xuanc\\.nuget\\packages\\",
-        "outputPath": "D:\\WorkPlace\\C-Sharp\\Working\\WEB\\PhanMemHeCan\\PhanMemHeCan\\obj\\",
+        "projectPath": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\PhanMemHeCan.csproj",
+        "packagesPath": "C:\\Users\\84363\\.nuget\\packages\\",
+        "outputPath": "D:\\LeanWay\\Project\\PhanMemHeCan\\PhanMemHeCan\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\xuanc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\84363\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
