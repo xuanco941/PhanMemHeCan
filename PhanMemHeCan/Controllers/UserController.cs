@@ -10,6 +10,8 @@ namespace PhanMemHeCan.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.Title = "Quản lý nhân viên";
+            ViewBag.UserActive = "active";
             Group? group = GroupBusiness.GetRuleUser(HttpContext.Session.GetInt32(Common.SESSION_USERID));
             if (group != null && group.IsManagementUser)
             {

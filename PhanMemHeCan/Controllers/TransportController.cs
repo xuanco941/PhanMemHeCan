@@ -24,6 +24,8 @@ namespace PhanMemHeCan.Controllers
             {
 
             }
+            ViewBag.Title = "Quản lý vận chuyển";
+            ViewBag.TransportActive = "active";
             return View();
 
         }

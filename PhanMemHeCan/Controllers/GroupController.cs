@@ -20,6 +20,8 @@ namespace PhanMemHeCan.Controllers
                 {
                     //Lỗi
                 }
+                ViewBag.Title = "Quản lý nhóm quyền";
+                ViewBag.GroupActive = "active";
                 return View();
             }
             else
