@@ -4,7 +4,7 @@ namespace PhanMemHeCan.Models
 {
     public class PhanMemHeCanContext : DbContext
     {
-        public const string ConnectionString = @"Data Source=DESKTOP-P4IC2M8\SQLEXPRESS;Initial Catalog=PhanMemHeCan;User ID=sa;Password=942001xX";
+        public const string ConnectionString = Common.ConnectionString;
 
         public DbSet<User.User> User { get; set; }
         public DbSet<Group.Group> Group { get; set; }
