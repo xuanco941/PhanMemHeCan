@@ -18,6 +18,9 @@ namespace PhanMemHeCan.Controllers
                 ViewBag.Cars = null;
                 //Loi
             }
+            ViewBag.Title = "Quản lý xe chở hàng";
+            ViewBag.CarActive = "active";
+             
             return View();
         }
         //Thêm

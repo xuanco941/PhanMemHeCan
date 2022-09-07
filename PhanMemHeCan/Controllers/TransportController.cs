@@ -18,12 +18,14 @@ namespace PhanMemHeCan.Controllers
             {
                 TransportPagination transportPagination = new TransportPagination();
                 transportPagination.SearchTransport(pagereal, productName, timeStart, timeEnd, productWeightStart, productWeightEnd, numberResultOnPage);
-                ViewBag.Transport = transportPagination;
+                ViewBag.Transports = transportPagination.listTransport;
             }
             catch (Exception ex)
             {
 
             }
+            ViewBag.Title = "Quản lý vận chuyển";
+            ViewBag.TransportActive = "active";
             return View();
 
         }

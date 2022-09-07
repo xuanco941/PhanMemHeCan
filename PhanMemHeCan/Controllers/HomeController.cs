@@ -15,6 +15,8 @@ namespace PhanMemHeCan.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Title = "Trang chủ";
+            ViewBag.HomeActive = "active";
             return View();
         }
     }

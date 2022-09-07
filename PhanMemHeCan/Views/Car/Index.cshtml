@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "_Layout";
 }
-
+@using PhanMemHeCan.Models.Car;
 
 <div class="fuction">
     <div class="row ">
@@ -12,38 +12,6 @@
             <button type="button" class="btn btn-primary" id="btn_Them" style="font-size: 20px; height: 50px; width: 120px;">
                 Thêm mới
             </button>
-            <!-- Modal -->
-            <div class="modal" id="ModalThem">
-                <div class="modal_content">
-                    <!-- header -->
-                    <span class="close">&times;</span>
-                    <h4 style="text-align:center;" class="fw-bold">Thêm thông tin xe chở hàng</h4>
-
-                    <!-- body -->
-                    <form action="" method="post">
-                        <!-- <div class="mb-3">
-                            <label for="" class="form-label">ID_Xe</label>
-                            <input type="text" class="form-control" id="" name="">
-                        </div> -->
-                        <div class="mb-3">
-                            <label for="" class="form-label">Trọng lượng xe</label>
-                            <input type="text" class="form-control" id="" name="">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Tên người lái</label>
-                            <input type="text" class="form-control" id="" name="">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Biển số xe</label>
-                            <input type="text" class="form-control" id="" name="">
-                        </div>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-primary btn-lg">Lưu</button>
-                        </div>
-                        <!-- <button type="button" class="btn btn-primary"> <a href="QuanLyNhanVien.html" class="text-white ">Quay lại</a></button> -->
-                    </form>
-                </div>
-            </div>
 
         </div>
         <div class="col-4"></div>
@@ -68,98 +36,27 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th>1</th>
-                <td>120</td>
-                <td>Otto</td>
-                <td>30D-1845</td>
-                <td>
-                    <!-- <p class="text-center btn-success "><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
-                        <i class="bi bi-pencil-square"></i>
-                    </button>
-                    <div class="modal" id="ModalSua">
-                        <div class="modal_content">
-                            <!-- header -->
-                            <span class="closeS">&times;</span>
-                            <h4 style="text-align:center;" class="fw-bold">Sửa thông tin xe hàng</h4>
+            @foreach (Car item in ViewBag.Cars)
+            {
+                <tr data-id="@item.CarID">
+                    <th>@item.CarID</th>
+                    <td>@item.CarWeight</td>
+                    <td>@item.DriverName</td>
+                    <td>@item.NumberPlates</td>
+                    <td>
+                        <!-- <p class="text-center btn-success "><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
+                        <button type="button" class="btn btn-primary" data-id="@item.CarID" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
 
-                            <!-- body -->
-                            <form action="" method="post">
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Trọng lượng xe</label>
-                                    <input type="text" class="form-control" id="" name="">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Tên người lái</label>
-                                    <input type="text" class="form-control" id="" name="">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Biển số xe</label>
-                                    <input type="text" class="form-control" id="" name="">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Tên nhóm quyền</label>
-                                    <input type="text" class="form-control" id="" name="">
-                                </div>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button type="button" class="btn btn-primary btn-lg">Lưu</button>
-                                </div>
-                            </form>
+                        <!-- <p class="text-center btn-danger "><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
+                        <button type="button" class="btn btn-primary" data-id="@item.CarID" id="btn_Xoa" style=" width: 40px; height: 40px;">
+                            <i class="bi bi-person-x"></i>
+                        </button>
 
-                        </div>
-                    </div>
-                    <!-- <p class="text-center btn-danger "><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Xoa" style=" width: 40px; height: 40px;">
-                        <i class="bi bi-person-x"></i>
-                    </button>
-                    <div class="modal" id="Xoa">
-                        <div class="modal_content">
-                            <!-- header -->
-                            <span class="closeX">&times;</span>
-                            <!-- <h5 class="fw-bold">Thông báo</h5> -->
-                            <!-- body -->
-                            <p class="fw-bold">Bạn chắc chắn muốn xóa ?</p>
-                            <!-- footer -->
-                            <button type="button" class="btn btn-primary">Có</button>
-                            <!-- <button type="button" class="btn btn-secondary " id="btnK" >Không</button> -->
-                        </div>
-                    </div>
-                    <!-- end modal -->
-                </td>
-            </tr>
-            <tr>
-                <th>2</th>
-                <td>200</td>
-                <td>Thornton</td>
-                <td>17C-82481</td>
-                <td>
-                    <!-- <p class="text-center btn-success"><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
-                        <i class="bi bi-pencil-square"></i>
-                    </button>
-                    <!-- <p class="text-center btn-danger"><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Xoa" style=" width: 40px; height: 40px;">
-                        <i class="bi bi-person-x"></i>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <th>3</th>
-                <td>250</td>
-                <td>twitter</td>
-                <td>27C-82548</td>
-                <td>
-                    <!-- <p class="text-center btn-success"><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
-                        <i class="bi bi-pencil-square"></i>
-                    </button>
-                    <!-- <p class="text-center btn-danger"><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Xoa" style=" width: 40px; height: 40px;">
-                        <i class="bi bi-person-x"></i>
-                    </button>
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
@@ -178,43 +75,86 @@
         </div>
     </div>
 </div> -->
-<!-- Modal -->
-<div class="modal fade show_modal" id="ModalThem">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Thêm xe chở hàng</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="" method="post">
-                    <div class="mb-3">
-                        <label for="id_xe" class="form-label">ID_Xe</label>
-                        <input type="text" class="form-control" id="id_xe" name="id_xe">
-                    </div>
-                    <div class="mb-3">
-                        <label for="Can_Xe" class="form-label">Trọng lượng xe</label>
-                        <input type="text" class="form-control" id="Can_Xe" name="Can_Xe">
-                    </div>
-                    <div class="mb-3">
-                        <label for="TenLaiXe" class="form-label">Tên người lái</label>
-                        <input type="text" class="form-control" id="TenLaiXe" name="TenLaiXe">
-                    </div>
-                    <div class="mb-3">
-                        <label for="BienSo" class="form-label">Biển số xe</label>
-                        <input type="text" class="form-control" id="BienSo" name="BienSo">
-                    </div>
+<!-- Modal thêm-->
+<div class="modal" id="ModalThem">
+    <div class="modal_content">
+        <!-- header -->
+        <span class="close">&times;</span>
+        <h4 style="text-align:center;" class="fw-bold">Thêm thông tin xe chở hàng</h4>
 
-                    <!-- <button type="submit" class="btn btn-primary">Lưu</button> -->
-                    <!-- <button type="button" class="btn btn-primary"> <a href="QuanLyNhanVien.html" class="text-white ">Quay lại</a></button> -->
-                </form>
+        <!-- body -->
+        <form action="" method="post">
+            <!-- <div class="mb-3">
+                <label for="" class="form-label">ID_Xe</label>
+                <input type="text" class="form-control" id="" name="">
+            </div> -->
+            <div class="mb-3">
+                <label for="" class="form-label">Trọng lượng xe</label>
+                <input type="text" class="form-control" id="" name="">
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Lưu</button>
-                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button> -->
+            <div class="mb-3">
+                <label for="" class="form-label">Tên người lái</label>
+                <input type="text" class="form-control" id="" name="">
             </div>
-        </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Biển số xe</label>
+                <input type="text" class="form-control" id="" name="">
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-primary btn-lg">Lưu</button>
+            </div>
+            <!-- <button type="button" class="btn btn-primary"> <a href="QuanLyNhanVien.html" class="text-white ">Quay lại</a></button> -->
+        </form>
     </div>
 </div>
+
+
+<!--Moadal sửa-->
+<div class="modal" id="ModalSua">
+    <div class="modal_content">
+        <!-- header -->
+        <span class="closeS">&times;</span>
+        <h4 style="text-align:center;" class="fw-bold">Sửa thông tin xe hàng</h4>
+
+        <!-- body -->
+        <form action="" method="post">
+            <div class="mb-3">
+                <label for="" class="form-label">Trọng lượng xe</label>
+                <input type="text" class="form-control" id="" name="">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Tên người lái</label>
+                <input type="text" class="form-control" id="" name="">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Biển số xe</label>
+                <input type="text" class="form-control" id="" name="">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Tên nhóm quyền</label>
+                <input type="text" class="form-control" id="" name="">
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-primary btn-lg">Lưu</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+<!--Modal xóa-->
+<div class="modal" id="Xoa">
+    <div class="modal_content">
+        <!-- header -->
+        <span class="closeX">&times;</span>
+        <!-- <h5 class="fw-bold">Thông báo</h5> -->
+        <!-- body -->
+        <p class="fw-bold" style="text-align:center">Bạn chắc chắn muốn xóa ?</p>
+        <!-- footer -->
+        <div class="d-grid col-3 mx-auto">
+            <button type="button" class="btn btn-primary">Có</button>
+        </div>
+
+        <!-- <button type="button" class="btn btn-secondary " id="btnK" >Không</button> -->
+    </div>
+</div>
+<!-- end modal -->
