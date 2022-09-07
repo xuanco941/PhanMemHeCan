@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "_Layout";
 }
-
+@using PhanMemHeCan.Models.Group;
 
 <div class="fuction">
     <div class="row ">
@@ -27,62 +27,47 @@
             <tr>
                 <th scope="col">ID_NhomQuuyen</th>
                 <th scope="col">Tên nhóm quyền</th>
-                <th scope="col">A</th>
-                <th scope="col">B</th>
+                <th scope="col">Quản lý nhân viên</th>
+                <th scope="col">Quản lý nhóm quyền</th>
                 <th scope="col">Thao tác</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th>1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-                <td>
-                    <!-- <p class="text-center btn-success "><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
-                        <i class="bi bi-pencil-square"></i>
-                    </button>
-                    
-                    <!-- <p class="text-center btn-danger "><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Xoa" style=" width: 40px; height: 40px;">
-                        <i class="bi bi-person-x"></i>
-                    </button>
-                    
-                </td>
-            </tr>
-            <tr>
-                <th>2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>fat</td>
-                <td>
-                    <!-- <p class="text-center btn-success"><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
-                        <i class="bi bi-pencil-square"></i>
-                    </button>
-                    <!-- <p class="text-center btn-danger"><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Xoa" style=" width: 40px; height: 40px;">
-                        <i class="bi bi-person-x"></i>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <th>3</th>
-                <td>Larry the Bird</td>
-                <td>Larry Bird</td>
-                <td>twitter</td>
-                <td>
-                    <!-- <p class="text-center btn-success"><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
-                        <i class="bi bi-pencil-square"></i>
-                    </button>
-                    <!-- <p class="text-center btn-danger"><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Xoa" style=" width: 40px; height: 40px;">
-                        <i class="bi bi-person-x"></i>
-                    </button>
-                </td>
-            </tr>
+            @foreach (Group item in ViewBag.Groups)
+            {
+                <tr data-id="@item.GroupID">
+                    <th>@item.GroupID</th>
+                    <td>@item.GroupName</td>
+                    @if (item.IsManagementUser == true)
+                    {
+                        <td>Có</td>
+                    }
+                    else
+                    {
+                        <td>Không</td>
+                    }
+                    @if (item.IsManagementGroup == true)
+                    {
+                        <td>Có</td>
+                    }
+                    else
+                    {
+                        <td>Không</td>
+                    }
+                    <td>
+                        <!-- <p class="text-center btn-success "><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
+                        <button type="button" class="btn btn-primary" data-id="@item.GroupID" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+
+                        <!-- <p class="text-center btn-danger "><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
+                        <button type="button" class="btn btn-primary" data-id="@item.GroupID" id="btn_Xoa" style=" width: 40px; height: 40px;">
+                            <i class="bi bi-person-x"></i>
+                        </button>
+
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

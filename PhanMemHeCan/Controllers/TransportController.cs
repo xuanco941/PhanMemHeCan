@@ -18,7 +18,7 @@ namespace PhanMemHeCan.Controllers
             {
                 TransportPagination transportPagination = new TransportPagination();
                 transportPagination.SearchTransport(pagereal, productName, timeStart, timeEnd, productWeightStart, productWeightEnd, numberResultOnPage);
-                ViewBag.Transport = transportPagination;
+                ViewBag.Transports = transportPagination.listTransport;
             }
             catch (Exception ex)
             {

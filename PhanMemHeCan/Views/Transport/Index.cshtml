@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "_Layout";
 }
-
+@using PhanMemHeCan.Models.Transport;
 
 <div class="fuction">
     <div class="row ">
@@ -11,7 +11,7 @@
             <button type="button" class="btn btn-primary" id="btn_Them" style="font-size: 20px; width: 120px; height: 50px;">
                 Thêm mới
             </button>
-            
+
         </div>
         <div class="col-4 ">
             <!-- <p class="text-center btn-primary btn-add"><a href="" class="text-white">In dữ liệu</a></p> -->
@@ -41,81 +41,50 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th>1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-                <td>A</td>
-                <td>
-                    <!-- <p class="text-center btn-success "><a href="" class="text-white"><i class="bi bi-eye-slash" ></i></a></p>
-                    <p class="text-center btn-danger "><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
-                        <i class="bi bi-eye-slash"></i>
-                    </button>
-                    
 
-                    <!-- <p class="text-center btn-danger "><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Xoa" style=" width: 40px; height: 40px;">
-                        <i class="bi bi-person-x"></i>
-                    </button>
-                    
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>fat</td>
-                <td>A</td>
-                <td>
-                    <!-- <p class="text-center btn-success"><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_XemChiTiet" style=" width: 40px; height: 40px; margin: 5px;">
-                        <i class="bi bi-eye-slash"></i>
-                    </button>
-                    <!-- <p class="text-center btn-danger"><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_Xoa" style=" width: 40px; height: 40px;">
-                        <i class="bi bi-person-x"></i>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>LB</td>
-                <td>twitter</td>
-                <td>B</td>
-                <td>
-                    <!-- <p class="text-center btn-success"><a href="" class="text-white"><i class="bi bi-pencil-square" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_XemChiTiet" style=" width: 40px; height: 40px; margin: 5px;">
-                        <i class="bi bi-eye-slash"></i>
-                    </button>
+            @foreach (Transport item in ViewBag.Transports)
+            {
+                <tr data-id="@item.TransportID">
+                    <th>@item.TransportID</th>
+                    <th>@item.ProductName</th>
+                    <td>@item.ProductWeight</td>
+                    <td>@item.CarWeight</td>
+                    <td>@item.TotalWeight</td>
+                    <td>
+                        <!-- <p class="text-center btn-success "><a href="" class="text-white"><i class="bi bi-eye-slash" ></i></a></p>
+                        <p class="text-center btn-danger "><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
+                        <button type="button" class="btn btn-primary" data-id="@item.TransportID" id="btn_Sua" style=" width: 40px; height: 40px; margin: 5px;">
+                            <i class="bi bi-eye-slash"></i>
+                        </button>
 
-                    <!-- <p class="text-center btn-danger"><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
-                    <button type="button" class="btn btn-primary" id="btn_XemChiTiet" style=" width: 40px; height: 40px;">
-                        <i class="bi bi-person-x"></i>
-                    </button>
-                </td>
-            </tr>
+
+                        <!-- <p class="text-center btn-danger "><a href="" class="text-white"><i class="bi bi-person-x" ></i></a></p> -->
+                        <button type="button" class="btn btn-primary" data-id="@item.TransportID" id="btn_Xoa" style=" width: 40px; height: 40px;">
+                            <i class="bi bi-person-x"></i>
+                        </button>
+
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
 
 
-    <div class="row " style="padding-top: 50px">
-        <div class="col d-flex justify-content-end n01">
-            <button class="btn btn-primary " type="button" style="font-size: 20px; width: 120px; height: 50px;">In dữ liệu </button>
-        </div>
-        <!-- <div class="col-3 d-flex justify-content-end  ">
-            <button class="btn btn-primary me-md-2 bt01" type="button">Trước</button>
-            <select class="form-select bt01"  >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            <button class="btn btn-primary bt01" type="button">Sau</button>
-        </div> -->
+<div class="row " style="padding-top: 50px">
+    <div class="col d-flex justify-content-end n01">
+        <button class="btn btn-primary " type="button" style="font-size: 20px; width: 120px; height: 50px;">In dữ liệu </button>
     </div>
+    <!-- <div class="col-3 d-flex justify-content-end  ">
+        <button class="btn btn-primary me-md-2 bt01" type="button">Trước</button>
+        <select class="form-select bt01"  >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        <button class="btn btn-primary bt01" type="button">Sau</button>
+    </div> -->
+</div>
 
 <!-- Modal thêm-->
 <div class="modal" id="ModalThem">
@@ -223,9 +192,9 @@
 <!--Modal xóa-->
 <div class="modal" id="Xoa">
     <div class="modal_content">
-                            <!-- header -->
+        <!-- header -->
         <span class="closeX">&times;</span>
-                            <!-- <h5 class="fw-bold">Thông báo</h5> -->
+        <!-- <h5 class="fw-bold">Thông báo</h5> -->
         <!-- body -->
         <p class="fw-bold" style="text-align:center">Bạn chắc chắn muốn xóa ?</p>
         <!-- footer -->
